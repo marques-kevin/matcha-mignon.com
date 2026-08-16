@@ -1,0 +1,55 @@
+name: Améliorer une page
+description: Optimiser le SEO d'une page existante (meta, contenu, maillage)
+title: "[Meta] Améliorer : "
+labels:
+  - agent:writer
+  - type:meta
+  - status:backlog
+body:
+  - type: input
+    id: page
+    attributes:
+      label: URL de la page
+      placeholder: "/guide/bienfaits-matcha"
+    validations:
+      required: true
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Type de problème
+      options:
+        - title trop long
+        - description à optimiser
+        - CTR faible (GSC)
+        - contenu à enrichir
+        - maillage interne insuffisant
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexte / données
+      description: Métriques GSC, audit, ou observation
+      placeholder: |
+        GSC : 340 impressions, CTR 1.8%, position 12
+        Title actuel : 58 caractères mais peu engageant
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objectif
+      placeholder: "Augmenter le CTR avec un title plus actionnable, enrichir l'intro avec un lien vers /guide/preparer-le-matcha"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critères d'acceptation
+      value: |
+        - [ ] Meta title/description optimisés
+        - [ ] `updatedAt` mis à jour
+        - [ ] Maillage interne amélioré si pertinent
+        - [ ] Audit SEO vert
+    validations:
+      required: true

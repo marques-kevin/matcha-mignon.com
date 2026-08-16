@@ -1,0 +1,25 @@
+name: Recherche SEO
+description: Analyse ou veille avant décision éditoriale (SEO Manager)
+title: "[Research] "
+labels:
+  - agent:manager
+  - type:research
+  - status:backlog
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question à investiguer
+      placeholder: "Faut-il créer une page dédiée 'matcha latte maison' ou enrichir le guide existant ?"
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Données disponibles
+      placeholder: "GSC, audit, concurrence SERP..."
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Décision attendue
+      placeholder: "Créer issue Content Writer OU fermer avec justification"

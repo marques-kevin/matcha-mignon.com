@@ -1,0 +1,67 @@
+name: Nouveau guide
+description: Créer un article guide SEO (Content Writer)
+title: "[Content] Guide : "
+labels:
+  - agent:writer
+  - type:content
+  - status:backlog
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Spec pour le **SEO Content Writer**. Le SEO Manager remplit ce template ;
+        l'agent Writer implémente la spec et ouvre une PR avec `Fixes #N`.
+  - type: input
+    id: keyword
+    attributes:
+      label: Mot-clé principal
+      placeholder: "matcha bio"
+    validations:
+      required: true
+  - type: dropdown
+    id: intent
+    attributes:
+      label: Intention de recherche
+      options:
+        - informational
+        - commercial
+        - transactional
+    validations:
+      required: true
+  - type: input
+    id: slug
+    attributes:
+      label: Slug suggéré (kebab-case)
+      placeholder: "matcha-bio"
+    validations:
+      required: true
+  - type: textarea
+    id: angle
+    attributes:
+      label: Angle éditorial
+      description: Ce que l'article doit couvrir et comment se différencier
+      placeholder: "Comparer matcha bio vs conventionnel, critères de certification, impact goût..."
+    validations:
+      required: true
+  - type: textarea
+    id: internal_links
+    attributes:
+      label: Maillage interne requis
+      description: Pages à lier depuis et vers ce guide
+      placeholder: |
+        Depuis : /guide, /guide/qu-est-ce-que-le-matcha
+        Vers : /produits/matcha-ceremonie, /guide/bienfaits-matcha
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critères d'acceptation
+      value: |
+        - [ ] Entrée ajoutée dans `lib/content/guides.ts`
+        - [ ] Title ≤ 60 caractères, description ≤ 160 caractères
+        - [ ] `relatedGuides` et `relatedProducts` renseignés
+        - [ ] `updatedAt` à la date du jour
+        - [ ] Audit SEO vert (`npm run audit:check`)
+    validations:
+      required: true
