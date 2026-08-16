@@ -4,6 +4,7 @@ import {
   computeCrawlDepth,
   computeLinkJuice,
   extractInternalLinks,
+  isStaticAssetPath,
   normalizeInternalHref,
   normalizeLinkJuiceScores,
 } from "./linking";
@@ -265,6 +266,8 @@ describe("internal linking", () => {
     expect(normalizeInternalHref("#section")).toBeNull();
     expect(normalizeInternalHref("https://external.com")).toBeNull();
     expect(normalizeInternalHref("/_next/static/chunk.js")).toBeNull();
+    expect(normalizeInternalHref("/icon.svg?hash")).toBeNull();
+    expect(isStaticAssetPath("/favicon.ico")).toBe(true);
   });
 
   it("detects broken links and orphan pages", () => {
