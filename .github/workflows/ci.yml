@@ -10,9 +10,12 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  NODE_VERSION: "20"
+
 jobs:
-  quality:
-    name: Lint, test, build & audit
+  install:
+    name: Install
     runs-on: ubuntu-latest
 
     steps:
@@ -22,26 +25,146 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache node_modules
+        id: npm-cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
+
+  lint:
+    name: Lint
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: ESLint
         run: npm run lint
 
+  typecheck:
+    name: Typecheck
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
       - name: TypeScript
         run: npm run typecheck
 
+  test:
+    name: Test
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
       - name: Unit tests
         run: npm run test:run
+
+  build:
+    name: Build
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Build static site
         run: npm run build
 
       - name: Verify static export
         run: test -f out/index.html
+
+      - name: Upload static export
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-export
+          path: out/
+          retention-days: 1
+
+  audit:
+    name: Audit
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Download static export
+        uses: actions/download-artifact@v4
+        with:
+          name: static-export
+          path: out/
 
       - name: SEO & internal linking audit
         run: npm run audit:check
