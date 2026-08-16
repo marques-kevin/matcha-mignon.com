@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation agents (AGENTS.md)
+    url: https://github.com/marques-kevin/matcha-mignon.com/blob/main/AGENTS.md
+    about: Règles et conventions pour les agents IA du projet

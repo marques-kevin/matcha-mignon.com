@@ -1,0 +1,52 @@
+name: Fix technique SEO
+description: Correction technique sans réécriture éditoriale (Tech Fixer)
+title: "[Tech] Fix SEO : "
+labels:
+  - agent:tech
+  - type:technical
+  - status:backlog
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page concernée
+      placeholder: "/annuaire"
+    validations:
+      required: true
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Type de fix
+      options:
+        - lien cassé
+        - page orpheline
+        - incohérence sitemap
+        - structure H1/H2
+        - canonical manquant
+        - autre
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Détails du problème
+      placeholder: "Audit : page orpheline, crawl depth null, 0 lien entrant depuis /"
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Fix attendu
+      placeholder: "Ajouter un lien depuis /guide et /produits vers /annuaire"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critères d'acceptation
+      value: |
+        - [ ] Problème résolu dans l'audit
+        - [ ] Pas de régression sur les autres pages
+        - [ ] CI verte
+    validations:
+      required: true
