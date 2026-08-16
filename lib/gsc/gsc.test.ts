@@ -1,6 +1,91 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, afterEach } from "vitest";
+import { parseServiceAccountCredentials } from "./credentials";
 import { resolveSiteUrl } from "./client";
 import { buildGscReport } from "./report";
+
+const sampleCredentials = {
+  type: "service_account",
+  project_id: "test-project",
+  private_key_id: "key-id",
+  private_key:
+    "-----BEGIN PRIVATE KEY-----\\ntest\\n-----END PRIVATE KEY-----\\n",
+  client_email: "test@example.iam.gserviceaccount.com",
+  client_id: "123",
+  auth_uri: "https://accounts.google.com/o/oauth2/auth",
+  token_uri: "https://oauth2.googleapis.com/token",
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+  client_x509_cert_url:
+    "https://www.googleapis.com/robot/v1/metadata/x509/test",
+};
+
+describe("parseServiceAccountCredentials", () => {
+  const envFields = [
+    "GSC_TYPE",
+    "GSC_PROJECT_ID",
+    "GSC_PRIVATE_KEY_ID",
+    "GSC_PRIVATE_KEY",
+    "GSC_CLIENT_EMAIL",
+    "GSC_CLIENT_ID",
+    "GSC_AUTH_URI",
+    "GSC_TOKEN_URI",
+    "GSC_AUTH_PROVIDER_X509_CERT_URL",
+    "GSC_CLIENT_X509_CERT_URL",
+    "GSC_APPLICATION_CREDENTIALS",
+  ] as const;
+
+  const originalEnv = Object.fromEntries(
+    envFields.map((field) => [field, process.env[field]])
+  );
+
+  const sampleEnv = {
+    GSC_TYPE: sampleCredentials.type,
+    GSC_PROJECT_ID: sampleCredentials.project_id,
+    GSC_PRIVATE_KEY_ID: sampleCredentials.private_key_id,
+    GSC_PRIVATE_KEY: sampleCredentials.private_key,
+    GSC_CLIENT_EMAIL: sampleCredentials.client_email,
+    GSC_CLIENT_ID: sampleCredentials.client_id,
+    GSC_AUTH_URI: sampleCredentials.auth_uri,
+    GSC_TOKEN_URI: sampleCredentials.token_uri,
+    GSC_AUTH_PROVIDER_X509_CERT_URL:
+      sampleCredentials.auth_provider_x509_cert_url,
+    GSC_CLIENT_X509_CERT_URL: sampleCredentials.client_x509_cert_url,
+  };
+
+  afterEach(() => {
+    for (const field of envFields) {
+      const value = originalEnv[field];
+
+      if (value === undefined) {
+        delete process.env[field];
+      } else {
+        process.env[field] = value;
+      }
+    }
+  });
+
+  it("parses flattened service account fields from .env", () => {
+    for (const [field, value] of Object.entries(sampleEnv)) {
+      process.env[field] = value;
+    }
+    delete process.env.GSC_APPLICATION_CREDENTIALS;
+
+    expect(parseServiceAccountCredentials()).toEqual({
+      ...sampleCredentials,
+      private_key:
+        "-----BEGIN PRIVATE KEY-----\ntest\n-----END PRIVATE KEY-----\n",
+    });
+  });
+
+  it("throws when no credentials are configured", () => {
+    for (const field of envFields) {
+      delete process.env[field];
+    }
+
+    expect(() => parseServiceAccountCredentials()).toThrow(
+      "Missing Google credentials"
+    );
+  });
+});
 
 describe("resolveSiteUrl", () => {
   const accessibleSites = [

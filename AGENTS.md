@@ -10,13 +10,13 @@ Site éditorial en français (guides + produits) conçu pour le SEO. Objectif lo
 
 ## Stack
 
-| Outil | Version / détail |
-|-------|------------------|
-| Next.js | 15 (App Router) |
-| React | 19 |
-| TypeScript | strict |
-| Tailwind CSS | v4 + plugin Typography |
-| Build | `output: "export"` → dossier `out/` |
+| Outil        | Version / détail                    |
+| ------------ | ----------------------------------- |
+| Next.js      | 15 (App Router)                     |
+| React        | 19                                  |
+| TypeScript   | strict                              |
+| Tailwind CSS | v4 + plugin Typography              |
+| Build        | `output: "export"` → dossier `out/` |
 
 ## Commandes
 
@@ -164,7 +164,7 @@ Rôle : **chef de projet SEO**. Tu analyses, priorises et crées des **GitHub Is
 
 1. `npm ci`
 2. `npm run build && npm run audit:check`
-3. `npm run gsc:collect` (si `GOOGLE_APPLICATION_CREDENTIALS` est disponible)
+3. `npm run gsc:collect` (si les champs service account sont dans `.env`)
 4. `gh issue list --state open --limit 50`
 5. Analyser audit + GSC + backlog existant
 6. Créer ou mettre à jour des issues via les templates (`.github/ISSUE_TEMPLATE/`)
@@ -181,15 +181,15 @@ Utiliser le template **Nouveau guide** ou **Améliorer une page**. Chaque issue 
 
 ### Labels à utiliser
 
-| Label | Quand |
-|-------|-------|
-| `agent:writer` + `type:content` | Nouveau guide ou produit |
-| `agent:writer` + `type:meta` | Optimisation page existante |
-| `agent:tech` + `type:technical` | Fix audit (orphelin, lien cassé…) |
-| `agent:manager` + `type:research` | Analyse avant décision |
-| `status:ready` | Prête pour exécution par un autre agent |
-| `status:backlog` | Identifiée mais pas priorisée |
-| `status:blocked` | Donnée ou décision humaine manquante |
+| Label                             | Quand                                   |
+| --------------------------------- | --------------------------------------- |
+| `agent:writer` + `type:content`   | Nouveau guide ou produit                |
+| `agent:writer` + `type:meta`      | Optimisation page existante             |
+| `agent:tech` + `type:technical`   | Fix audit (orphelin, lien cassé…)       |
+| `agent:manager` + `type:research` | Analyse avant décision                  |
+| `status:ready`                    | Prête pour exécution par un autre agent |
+| `status:backlog`                  | Identifiée mais pas priorisée           |
+| `status:blocked`                  | Donnée ou décision humaine manquante    |
 
 ### Commandes utiles
 
@@ -201,11 +201,11 @@ gh issue edit 3 --add-label "status:ready" --remove-label "status:backlog"
 
 ## Fichiers clés
 
-| Fichier | Rôle |
-|---------|------|
-| `lib/site.ts` | URL du site, nom, locale — modifier avant déploiement |
-| `lib/seo.ts` | Metadata et Open Graph |
-| `lib/content/guides.ts` | Tous les guides |
-| `lib/content/products.ts` | Tous les produits |
-| `app/globals.css` | Thème Tailwind |
-| `next.config.ts` | Config export statique |
+| Fichier                   | Rôle                                                  |
+| ------------------------- | ----------------------------------------------------- |
+| `lib/site.ts`             | URL du site, nom, locale — modifier avant déploiement |
+| `lib/seo.ts`              | Metadata et Open Graph                                |
+| `lib/content/guides.ts`   | Tous les guides                                       |
+| `lib/content/products.ts` | Tous les produits                                     |
+| `app/globals.css`         | Thème Tailwind                                        |
+| `next.config.ts`          | Config export statique                                |
