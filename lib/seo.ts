@@ -21,11 +21,12 @@ export function buildMetadata({
   updatedAt,
 }: PageSeo): Metadata {
   const url = `${siteConfig.url}${path}`;
-  const fullTitle =
-    path === "/" ? `${siteConfig.name} — ${siteConfig.tagline}` : `${title} | ${siteConfig.name}`;
+  const isHome = path === "/";
+  const pageTitle = isHome ? `${siteConfig.name} — ${siteConfig.tagline}` : title;
+  const socialTitle = isHome ? pageTitle : `${title} | ${siteConfig.name}`;
 
   return {
-    title: fullTitle,
+    title: isHome ? { absolute: pageTitle } : pageTitle,
     description,
     keywords: keywords.length > 0 ? keywords : undefined,
     authors: [{ name: siteConfig.author }],
@@ -33,7 +34,7 @@ export function buildMetadata({
     metadataBase: new URL(siteConfig.url),
     alternates: { canonical: url },
     openGraph: {
-      title: fullTitle,
+      title: socialTitle,
       description,
       url,
       siteName: siteConfig.name,
@@ -44,7 +45,7 @@ export function buildMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title: socialTitle,
       description,
     },
     robots: {
