@@ -1,6 +1,28 @@
 import type { InternalLink, LinkingPageReport } from "./types";
 
 const HREF_REGEX = /href=["']([^"']+)["']/gi;
+const STATIC_ASSET_EXTENSIONS = [
+  ".svg",
+  ".ico",
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".webp",
+  ".gif",
+  ".css",
+  ".js",
+  ".woff",
+  ".woff2",
+  ".txt",
+  ".xml",
+];
+
+export function isStaticAssetPath(pathname: string): boolean {
+  const lowerPath = pathname.toLowerCase();
+  return STATIC_ASSET_EXTENSIONS.some((extension) =>
+    lowerPath.endsWith(extension)
+  );
+}
 
 export function normalizeInternalHref(href: string): string | null {
   if (
@@ -22,6 +44,10 @@ export function normalizeInternalHref(href: string): string | null {
   }
 
   const [pathname] = href.split(/[?#]/);
+  if (isStaticAssetPath(pathname)) {
+    return null;
+  }
+
   const normalized =
     pathname.endsWith("/") && pathname !== "/"
       ? pathname.slice(0, -1)
