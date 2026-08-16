@@ -12,6 +12,10 @@ const footerLinks = {
     },
     { path: "/guide/preparer-le-matcha", label: "Préparer le matcha" },
     { path: "/guide/bienfaits-matcha", label: "Bienfaits du matcha" },
+    {
+      path: "/guide/comment-choisir-son-matcha",
+      label: "Choisir son matcha",
+    },
   ],
   produits: [
     { path: "/produits/matcha-ceremonie", label: "Matcha Cérémonie" },
