@@ -209,3 +209,15 @@ gh issue edit 3 --add-label "status:ready" --remove-label "status:backlog"
 | `lib/content/products.ts` | Tous les produits                                     |
 | `app/globals.css`         | Thème Tailwind                                        |
 | `next.config.ts`          | Config export statique                                |
+
+## Cursor Cloud specific instructions
+
+Projet Node/npm classique (Node 22, `package-lock.json`). Les dépendances sont réinstallées au démarrage via `npm ci` (update script), donc pas besoin de réinstaller manuellement.
+
+Notes non évidentes pour lancer/tester dans l'environnement cloud :
+
+- Serveur de dev : `npm run dev` (Next 15 + Turbopack) écoute sur le port **3000**. C'est un processus foreground de longue durée → à lancer dans un terminal tmux dédié, pas dans `install`/`start`.
+- `npm run audit:check` (et `npm run start`) exigent que `npm run build` ait déjà généré `out/` ; sinon le script échoue avec « out/ not found ». Utiliser `npm run audit` qui enchaîne build + audit.
+- Pipeline complet : `npm run ci` = lint + typecheck + tests (`vitest run`) + build + audit.
+- Hooks git actifs (husky) : `pre-commit` lance `typecheck` + `lint-staged` (eslint --fix), `commit-msg` lance **commitlint** → les messages de commit doivent respecter la convention *Conventional Commits* (`feat: ...`, `fix: ...`, `chore: ...`).
+- `npm run gsc:collect` nécessite les variables `GSC_*` (voir `.env.example`) ; sans credentials, ce script est optionnel et peut être ignoré.
