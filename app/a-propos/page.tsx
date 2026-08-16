@@ -7,9 +7,9 @@ import { siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "À propos",
   description:
-    "Matcha Matcha : notre mission est de rendre le thé vert japonais accessible en France avec des guides fiables et des produits de qualité.",
+    "Matcha Mignon : notre mission est de rendre le thé vert japonais accessible en France avec des guides fiables et des produits de qualité.",
   path: "/a-propos",
-  keywords: ["matcha matcha", "à propos", "thé vert japonais france"],
+  keywords: ["matcha mignon", "à propos", "thé vert japonais france"],
 });
 
 const breadcrumbJsonLd = {
