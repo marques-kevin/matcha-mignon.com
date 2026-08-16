@@ -29,7 +29,7 @@ export const guides: Guide[] = [
       "matcha cérémonie",
       "origine matcha",
     ],
-    relatedGuides: ["preparer-le-matcha", "bienfaits-matcha"],
+    relatedGuides: ["preparer-le-matcha", "bienfaits-matcha", "matcha-bio"],
     relatedProducts: ["matcha-ceremonie", "matcha-culinaire"],
     sections: [
       {
@@ -61,6 +61,16 @@ export const guides: Guide[] = [
             "Couleur vert émeraude vif, odeur herbacée fraîche, texture fine sans grains. Un matcha jaunâtre ou amer indique souvent une qualité inférieure ou une mauvaise conservation. Pour la dégustation, consultez notre guide "
           ),
           link("/guide/preparer-le-matcha", "comment préparer le matcha"),
+          text("."),
+        ],
+      },
+      {
+        heading: "Matcha bio : une alternative responsable",
+        content: [
+          text(
+            "Le label bio garantit une culture sans pesticides de synthèse et un cahier des charges strict. Cela ne remplace pas les critères de qualité gustative — couleur, finesse, origine — mais rassure sur les pratiques agricoles. Pour tout comprendre sur la certification et les différences avec le matcha conventionnel, lisez notre guide "
+          ),
+          link("/guide/matcha-bio", "matcha bio"),
           text("."),
         ],
       },
@@ -126,7 +136,7 @@ export const guides: Guide[] = [
       "L-théanine",
       "énergie matcha",
     ],
-    relatedGuides: ["qu-est-ce-que-le-matcha", "preparer-le-matcha"],
+    relatedGuides: ["qu-est-ce-que-le-matcha", "preparer-le-matcha", "matcha-bio"],
     relatedProducts: ["matcha-ceremonie", "matcha-latte"],
     sections: [
       {
@@ -156,6 +166,66 @@ export const guides: Guide[] = [
           link("/produits/matcha-ceremonie", "matcha de cérémonie"),
           text(
             " de qualité. Évitez le matcha en fin de journée si vous êtes sensible à la caféine (environ 30–70 mg par tasse)."
+          ),
+        ],
+      },
+      {
+        heading: "Et le matcha bio ?",
+        content: [
+          text(
+            "Le label bio concerne les pratiques agricoles — absence de pesticides de synthèse, respect des sols — et non la concentration en nutriments. Un matcha bio n'est pas automatiquement plus riche en antioxydants qu'un matcha conventionnel de qualité. Pour comprendre ce que recouvre cette certification, consultez notre guide sur le "
+          ),
+          link("/guide/matcha-bio", "matcha bio"),
+          text("."),
+        ],
+      },
+    ],
+  },
+  {
+    slug: "matcha-bio",
+    title: "Matcha bio : quoi choisir ?",
+    description:
+      "Matcha bio ou conventionnel ? Labels, goût, prix et impact : tout ce qu'il faut savoir pour choisir votre poudre de thé vert en confiance.",
+    readingTime: "5 min",
+    publishedAt: "2026-08-16",
+    updatedAt: "2026-08-16",
+    keywords: ["matcha bio", "thé vert bio", "matcha biologique"],
+    relatedGuides: ["qu-est-ce-que-le-matcha", "preparer-le-matcha"],
+    relatedProducts: ["matcha-ceremonie"],
+    sections: [
+      {
+        heading: "Qu'est-ce que le matcha bio ?",
+        content: [
+          text(
+            "Un matcha bio est issu d'une culture certifiée selon le règlement européen sur l'agriculture biologique (label AB en France). Concrètement, cela signifie : pas de pesticides de synthèse, pas d'engrais chimiques, et un contrôle annuel par un organisme certificateur indépendant. Le "
+          ),
+          link("/guide/qu-est-ce-que-le-matcha", "matcha"),
+          text(
+            " reste la même poudre de thé vert — feuilles ombragées, broyées à la pierre — mais les pratiques culturales respectent un cahier des charges strict."
+          ),
+        ],
+      },
+      {
+        heading: "Matcha bio vs matcha conventionnel",
+        content: [
+          text(
+            "Goût : les différences sont subtiles et dépendent surtout de l'origine et du grade, pas uniquement du label. Un bon matcha conventionnel de première récolte peut être plus délicat qu'un matcha bio de qualité moyenne. Prix : le bio coûte souvent 20 à 40 % plus cher, en raison des rendements plus faibles et des contrôles. Impact : le bio limite les résidus de pesticides et favorise la biodiversité des sols, un argument pertinent pour les consommateurs soucieux de l'environnement."
+          ),
+        ],
+      },
+      {
+        heading: "Comment choisir un matcha bio de qualité",
+        content: [
+          text(
+            "Vérifiez la présence du logo AB ou d'une certification reconnue (JAS au Japon, USDA aux États-Unis). Fiez-vous aussi aux critères visuels : vert émeraude intense, poudre fine, odeur herbacée fraîche. Pour la dégustation, un "
+          ),
+          link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+          text(
+            " bio de première récolte offre le meilleur équilibre. Apprenez à le préparer correctement avec notre guide "
+          ),
+          link("/guide/preparer-le-matcha", "comment préparer le matcha"),
+          text(
+            " — la température de l'eau et le fouettage influencent autant le résultat que la certification."
           ),
         ],
       },
