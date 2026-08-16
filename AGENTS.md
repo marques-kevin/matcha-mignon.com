@@ -222,6 +222,30 @@ gh issue create --title "[Tech] Fix SEO : ..." --label "agent:tech,type:technica
 gh issue edit 3 --add-label "status:ready" --remove-label "status:backlog"
 ```
 
+### Fin de run Writer / Tech — attendre CI et merger (obligatoire)
+
+**Ne termine pas le run après l'ouverture de la PR.** L'agent doit attendre la CI GitHub et merger lui-même. Ne pas utiliser `gh pr merge --auto` ni compter sur une automation externe.
+
+1. Ouvrir la PR avec `Fixes #<N>` dans le body
+2. **Attendre la CI** :
+   ```bash
+   gh pr checks <pr> --watch --interval 15
+   ```
+   Si un check échoue → corriger sur la branche, push, relancer le watch jusqu'à tout vert
+3. **Vérifier que la PR est mergeable** :
+   ```bash
+   gh pr view <pr> --json mergeable,mergeable_state
+   ```
+   - `mergeable_state: BEHIND` → `gh pr update-branch <pr>`, puis attendre la CI à nouveau
+   - `mergeable_state: DIRTY` (conflit) → merger `origin/main` sur la branche, résoudre les conflits, push, attendre la CI à nouveau
+4. **Merger explicitement** (CI verte + mergeable) :
+   ```bash
+   gh pr merge <pr> --squash --delete-branch
+   ```
+5. Vérifier : `gh pr view <pr> --json state` → `MERGED`. L'issue se ferme via `Fixes #<N>`.
+
+Si merge impossible après résolution de conflit, documenter le blocage dans la PR (ne pas abandonner sans explication).
+
 ## Agent : SEO Content Writer
 
 Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`agent:writer`). Tu exécutes la spec du Manager ; tu ne priorises pas le backlog.
@@ -234,9 +258,9 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 - Mettre à jour `components/FooterLinks.tsx` si la page est importante (cf. spec issue)
 - Exécuter `npm run build`, `npm run audit:check` (ou `npm run audit`)
 - Ouvrir une **PR** avec `Fixes #N` dans le body
-- Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
+- Attendre la CI et **merger la PR** (`gh pr merge --squash --delete-branch`) — voir « Fin de run Writer / Tech »
 
-L'issue se ferme au merge via `Fixes #N` dans la PR. Ne pas commenter l'issue ni modifier ses labels (permissions Cursor insuffisantes — sans impact).
+L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier ses labels.
 
 ### Ne doit pas faire
 
@@ -244,6 +268,8 @@ L'issue se ferme au merge via `Fixes #N` dans la PR. Ne pas commenter l'issue ni
 - Modifier `app/*` ou `components/*` sauf maillage explicite dans la spec (ex. footer)
 - Traiter plus d'**une issue** par run
 - Réécriture hors scope de l'issue
+- **S'arrêter après l'ouverture de la PR** — tu dois attendre la CI et merger
+- Utiliser `gh pr merge --auto` (ne pas quitter avant merge explicite)
 
 ### Workflow (webhook ou run manuel)
 
@@ -257,9 +283,7 @@ L'issue se ferme au merge via `Fixes #N` dans la PR. Ne pas commenter l'issue ni
 5. Branche : `content/<slug>` ou `meta/<slug>` depuis `main`
 6. Commit _Conventional Commits_ (`feat:`, `fix:`, `chore:` — pas de point final dans le subject)
 7. PR : titre clair, body avec `Fixes #<N>` et checklist des critères d'acceptation
-8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
-   - La CI merge ensuite sans intervention humaine (workflow `Auto-merge agent PRs` en secours)
-   - L'issue se ferme au merge (`Fixes #<N>`)
+8. **Attendre CI + merger** — suivre « Fin de run Writer / Tech » (obligatoire, ne pas quitter avant `MERGED`)
 
 ### Checklist contenu (nouveau guide)
 
@@ -279,7 +303,7 @@ Rôle : **corriger les problèmes techniques SEO** sans réécriture éditoriale
 - Corriger : liens cassés, pages orphelines, sitemap, structure H1/H2, canonical, titres dupliqués, maillage technique
 - Exécuter `npm run build`, `npm run audit:check` (ou `npm run audit`)
 - Ouvrir une **PR** avec `Fixes #N`
-- Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
+- Attendre la CI et **merger la PR** — voir « Fin de run Writer / Tech »
 
 L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier ses labels.
 
@@ -289,6 +313,8 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 - Créer des guides ou produits — rôle du **Content Writer**
 - Traiter plus d'**une issue** par run
 - Ajouter API routes, Server Actions, ou tout ce qui viole l'export statique (voir « Interdictions »)
+- **S'arrêter après l'ouverture de la PR** — attendre CI et merger
+- Utiliser `gh pr merge --auto`
 
 ### Workflow (webhook ou run manuel)
 
@@ -300,8 +326,7 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 5. Branche : `fix/<slug-court>` depuis `main`
 6. Commit _Conventional Commits_
 7. PR avec `Fixes #<N>`
-8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
-   - L'issue se ferme au merge (`Fixes #<N>`)
+8. **Attendre CI + merger** — suivre « Fin de run Writer / Tech » (obligatoire, ne pas quitter avant `MERGED`)
 
 ### Types de fix courants
 
