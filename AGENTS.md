@@ -212,8 +212,8 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 - Exécuter `npm run build`, `npm run audit:check` (ou `npm run audit`)
 - Ouvrir une **PR** avec `Fixes #N` dans le body
 - Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
-- Commenter l'issue avec le lien PR via `gh`
-- Retirer `status:ready` et ajouter un commentaire de statut sur l'issue traitée
+
+Le workflow GitHub `Agent PR issue sync` commente l'issue et retire `status:ready` à l'ouverture de la PR (l'intégration Cursor ne peut pas le faire). Ne pas bloquer le run si `gh issue comment` échoue.
 
 ### Ne doit pas faire
 
@@ -236,7 +236,7 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 7. PR : titre clair, body avec `Fixes #<N>` et checklist des critères d'acceptation
 8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
    - La CI merge ensuite sans intervention humaine (workflow `Auto-merge agent PRs` en secours)
-9. Commenter l'issue : lien PR + retirer `status:ready` (`gh issue edit <N> --remove-label "status:ready"`)
+9. Issue : `Agent PR issue sync` commente et retire `status:ready` (pas besoin de `gh issue comment`)
 
 ### Checklist contenu (nouveau guide)
 
@@ -257,7 +257,8 @@ Rôle : **corriger les problèmes techniques SEO** sans réécriture éditoriale
 - Exécuter `npm run build`, `npm run audit:check` (ou `npm run audit`)
 - Ouvrir une **PR** avec `Fixes #N`
 - Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
-- Commenter l'issue et retirer `status:ready`
+
+Le workflow `Agent PR issue sync` gère le commentaire issue et `status:ready` (l'intégration Cursor ne peut pas).
 
 ### Ne doit pas faire
 
@@ -277,7 +278,7 @@ Rôle : **corriger les problèmes techniques SEO** sans réécriture éditoriale
 6. Commit _Conventional Commits_
 7. PR avec `Fixes #<N>`
 8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
-9. Commenter l'issue + retirer `status:ready`
+9. Issue : `Agent PR issue sync` commente et retire `status:ready`
 
 ### Types de fix courants
 
