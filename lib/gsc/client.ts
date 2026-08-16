@@ -1,18 +1,13 @@
 import { google, type searchconsole_v1 } from "googleapis";
+import { parseServiceAccountCredentials } from "./credentials";
 
 const GSC_SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
 
 export function createSearchConsoleClient() {
-  const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-
-  if (!credentialsPath) {
-    throw new Error(
-      "GOOGLE_APPLICATION_CREDENTIALS is not set. Add it to your .env file."
-    );
-  }
+  const credentials = parseServiceAccountCredentials();
 
   const auth = new google.auth.GoogleAuth({
-    keyFile: credentialsPath,
+    credentials,
     scopes: [GSC_SCOPE],
   });
 

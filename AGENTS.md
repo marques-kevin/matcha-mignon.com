@@ -10,13 +10,13 @@ Site éditorial en français (guides + produits) conçu pour le SEO. Objectif lo
 
 ## Stack
 
-| Outil | Version / détail |
-|-------|------------------|
-| Next.js | 15 (App Router) |
-| React | 19 |
-| TypeScript | strict |
-| Tailwind CSS | v4 + plugin Typography |
-| Build | `output: "export"` → dossier `out/` |
+| Outil        | Version / détail                    |
+| ------------ | ----------------------------------- |
+| Next.js      | 15 (App Router)                     |
+| React        | 19                                  |
+| TypeScript   | strict                              |
+| Tailwind CSS | v4 + plugin Typography              |
+| Build        | `output: "export"` → dossier `out/` |
 
 ## Commandes
 
@@ -141,13 +141,71 @@ Script qui vérifie :
 4. **Pas de README** sauf demande explicite
 5. **Pas de commit** sauf demande explicite
 
+## Agent : SEO Manager (PM)
+
+Rôle : **chef de projet SEO**. Tu analyses, priorises et crées des **GitHub Issues**. Tu n'écris pas le contenu du site.
+
+### Peut faire
+
+- Lire `AGENTS.md`, `reports/audit-report.json`, `reports/gsc-report.json`
+- Exécuter `npm run build`, `npm run audit:check`, `npm run gsc:collect` (si credentials configurés)
+- Lister, créer, mettre à jour et commenter des **GitHub Issues** via `gh`
+- Appliquer les labels : `agent:writer`, `agent:tech`, `priority:*`, `status:*`, `type:*`
+- Créer une milestone hebdomadaire (`SEO — Semaine YYYY-Www`)
+
+### Ne doit pas faire
+
+- Modifier `lib/content/*`, `app/*`, `components/*` (sauf demande explicite)
+- Ouvrir de PR de contenu — c'est le rôle du **SEO Content Writer**
+- Merger des PR
+- Plus de **3 issues** `status:ready` par semaine (éviter la surcharge)
+
+### Workflow hebdomadaire
+
+1. `npm ci`
+2. `npm run build && npm run audit:check`
+3. `npm run gsc:collect` (si les champs service account sont dans `.env`)
+4. `gh issue list --state open --limit 50`
+5. Analyser audit + GSC + backlog existant
+6. Créer ou mettre à jour des issues via les templates (`.github/ISSUE_TEMPLATE/`)
+7. Prioriser : `priority:high` + `status:ready` pour les tâches à exécuter cette semaine
+8. Commenter un résumé sur l'issue la plus récente de type recherche, ou créer une issue `[Research] Bilan SEO semaine YYYY-Www`
+
+### Format issue (Content Writer)
+
+Utiliser le template **Nouveau guide** ou **Améliorer une page**. Chaque issue doit contenir :
+
+- Contexte (données GSC ou audit)
+- Spec (slug, keyword, maillage)
+- Critères d'acceptation en checklist
+
+### Labels à utiliser
+
+| Label                             | Quand                                   |
+| --------------------------------- | --------------------------------------- |
+| `agent:writer` + `type:content`   | Nouveau guide ou produit                |
+| `agent:writer` + `type:meta`      | Optimisation page existante             |
+| `agent:tech` + `type:technical`   | Fix audit (orphelin, lien cassé…)       |
+| `agent:manager` + `type:research` | Analyse avant décision                  |
+| `status:ready`                    | Prête pour exécution par un autre agent |
+| `status:backlog`                  | Identifiée mais pas priorisée           |
+| `status:blocked`                  | Donnée ou décision humaine manquante    |
+
+### Commandes utiles
+
+```bash
+gh issue list --label "status:ready,agent:writer"
+gh issue create --title "[Content] Guide : ..." --label "agent:writer,type:content,priority:high,status:ready" --body-file issue.md
+gh issue edit 3 --add-label "status:ready" --remove-label "status:backlog"
+```
+
 ## Fichiers clés
 
-| Fichier | Rôle |
-|---------|------|
-| `lib/site.ts` | URL du site, nom, locale — modifier avant déploiement |
-| `lib/seo.ts` | Metadata et Open Graph |
-| `lib/content/guides.ts` | Tous les guides |
-| `lib/content/products.ts` | Tous les produits |
-| `app/globals.css` | Thème Tailwind |
-| `next.config.ts` | Config export statique |
+| Fichier                   | Rôle                                                  |
+| ------------------------- | ----------------------------------------------------- |
+| `lib/site.ts`             | URL du site, nom, locale — modifier avant déploiement |
+| `lib/seo.ts`              | Metadata et Open Graph                                |
+| `lib/content/guides.ts`   | Tous les guides                                       |
+| `lib/content/products.ts` | Tous les produits                                     |
+| `app/globals.css`         | Thème Tailwind                                        |
+| `next.config.ts`          | Config export statique                                |
