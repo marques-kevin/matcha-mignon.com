@@ -213,7 +213,7 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 - Ouvrir une **PR** avec `Fixes #N` dans le body
 - Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
 
-Le workflow `Agent PR issue sync` commente l'issue avec le lien PR (l'intégration Cursor ne peut pas). Ne pas bloquer le run si `gh issue comment` échoue.
+L'issue se ferme au merge via `Fixes #N` dans la PR. Ne pas commenter l'issue ni modifier ses labels (permissions Cursor insuffisantes — sans impact).
 
 ### Ne doit pas faire
 
@@ -236,7 +236,7 @@ Le workflow `Agent PR issue sync` commente l'issue avec le lien PR (l'intégrati
 7. PR : titre clair, body avec `Fixes #<N>` et checklist des critères d'acceptation
 8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
    - La CI merge ensuite sans intervention humaine (workflow `Auto-merge agent PRs` en secours)
-9. Issue : `Agent PR issue sync` poste le lien PR (fermeture auto via `Fixes #N` au merge)
+   - L'issue se ferme au merge (`Fixes #<N>`)
 
 ### Checklist contenu (nouveau guide)
 
@@ -258,7 +258,7 @@ Rôle : **corriger les problèmes techniques SEO** sans réécriture éditoriale
 - Ouvrir une **PR** avec `Fixes #N`
 - Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
 
-Le workflow `Agent PR issue sync` poste le lien PR sur l'issue (l'intégration Cursor ne peut pas commenter).
+L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier ses labels.
 
 ### Ne doit pas faire
 
@@ -278,7 +278,7 @@ Le workflow `Agent PR issue sync` poste le lien PR sur l'issue (l'intégration C
 6. Commit _Conventional Commits_
 7. PR avec `Fixes #<N>`
 8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
-9. Issue : `Agent PR issue sync` poste le lien PR (fermeture auto via `Fixes #N` au merge)
+   - L'issue se ferme au merge (`Fixes #<N>`)
 
 ### Types de fix courants
 
