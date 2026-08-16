@@ -21,7 +21,11 @@ export const products: Product[] = [
     origin: "Uji, Kyoto, Japon",
     price: "32 €",
     keywords: ["matcha cérémonie", "matcha uji", "matcha premium"],
-    relatedGuides: ["qu-est-ce-que-le-matcha", "preparer-le-matcha"],
+    relatedGuides: [
+      "qu-est-ce-que-le-matcha",
+      "preparer-le-matcha",
+      "comment-choisir-son-matcha",
+    ],
     relatedProducts: ["matcha-culinaire", "matcha-latte"],
     highlights: [
       "Première récolte (ichibancha)",
@@ -39,7 +43,11 @@ export const products: Product[] = [
     origin: "Kagoshima, Japon",
     price: "18 €",
     keywords: ["matcha culinaire", "matcha bio", "matcha cuisine"],
-    relatedGuides: ["qu-est-ce-que-le-matcha", "preparer-le-matcha"],
+    relatedGuides: [
+      "qu-est-ce-que-le-matcha",
+      "preparer-le-matcha",
+      "comment-choisir-son-matcha",
+    ],
     relatedProducts: ["matcha-ceremonie", "matcha-latte"],
     highlights: [
       "Certifié bio UE",
@@ -57,7 +65,11 @@ export const products: Product[] = [
     origin: "Nishio, Aichi, Japon",
     price: "24 €",
     keywords: ["matcha latte", "matcha café", "poudre matcha latte"],
-    relatedGuides: ["preparer-le-matcha", "bienfaits-matcha"],
+    relatedGuides: [
+      "preparer-le-matcha",
+      "bienfaits-matcha",
+      "comment-choisir-son-matcha",
+    ],
     relatedProducts: ["matcha-ceremonie", "matcha-culinaire"],
     highlights: [
       "Mousse épaisse garantie",

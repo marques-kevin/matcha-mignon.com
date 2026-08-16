@@ -1,7 +1,8 @@
 import { ProductCard } from "@/components/ProductCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { JsonLd } from "@/components/JsonLd";
-import { Grid, Page, PageHeader } from "@/components/ui";
+import { Grid, Page, PageHeader, Text } from "@/components/ui";
+import { ObfuscatableLink } from "@/components/ObfuscatableLink";
 import { products } from "@/lib/content/products";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
@@ -38,6 +39,16 @@ export default function ProduitsPage() {
         title="Nos produits matcha"
         description="Trois grades, trois usages — sélectionnés directement auprès de producteurs japonais."
       />
+      <Text variant="lead" className="mt-4 max-w-2xl">
+        Besoin d&apos;aide pour choisir ? Consultez notre guide{" "}
+        <ObfuscatableLink
+          path="/guide/comment-choisir-son-matcha"
+          variant="default"
+        >
+          comment choisir son matcha
+        </ObfuscatableLink>
+        .
+      </Text>
       <Grid className="mt-10">
         {products.map((product) => (
           <ProductCard key={product.slug} product={product} />
