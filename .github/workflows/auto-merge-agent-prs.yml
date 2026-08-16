@@ -1,0 +1,66 @@
+name: Auto-merge agent PRs
+
+# Squash-merge PRs from agent branches when CI passes.
+# Branches: content/*, meta/*, fix/* — Writer and Tech Fixer workflows.
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    if: |
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      (
+        startsWith(github.event.workflow_run.head_branch, 'content/') ||
+        startsWith(github.event.workflow_run.head_branch, 'meta/') ||
+        startsWith(github.event.workflow_run.head_branch, 'fix/')
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Squash-merge PR when CI is green
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const headBranch = context.payload.workflow_run.head_branch;
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner,
+              repo,
+              head: `${owner}:${headBranch}`,
+              state: 'open',
+            });
+
+            if (prs.length === 0) {
+              core.info(`No open PR for branch ${headBranch}`);
+              return;
+            }
+
+            const pr = prs[0];
+            core.info(`Merging PR #${pr.number} (${headBranch})`);
+
+            await github.rest.pulls.merge({
+              owner,
+              repo,
+              pull_number: pr.number,
+              merge_method: 'squash',
+            });
+
+            try {
+              await github.rest.git.deleteRef({
+                owner,
+                repo,
+                ref: `heads/${headBranch}`,
+              });
+            } catch (error) {
+              core.warning(`Branch delete failed: ${error.message}`);
+            }

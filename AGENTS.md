@@ -211,6 +211,7 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 - Mettre à jour `components/FooterLinks.tsx` si la page est importante (cf. spec issue)
 - Exécuter `npm run build`, `npm run audit:check` (ou `npm run audit`)
 - Ouvrir une **PR** avec `Fixes #N` dans le body
+- Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
 - Commenter l'issue avec le lien PR via `gh`
 - Retirer `status:ready` et ajouter un commentaire de statut sur l'issue traitée
 
@@ -218,7 +219,6 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 
 - Créer ou prioriser des issues — rôle du **SEO Manager**
 - Modifier `app/*` ou `components/*` sauf maillage explicite dans la spec (ex. footer)
-- Merger des PR
 - Traiter plus d'**une issue** par run
 - Réécriture hors scope de l'issue
 
@@ -234,7 +234,9 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 5. Branche : `content/<slug>` ou `meta/<slug>` depuis `main`
 6. Commit _Conventional Commits_ (`feat:`, `fix:`, `chore:` — pas de point final dans le subject)
 7. PR : titre clair, body avec `Fixes #<N>` et checklist des critères d'acceptation
-8. Commenter l'issue : lien PR + retirer `status:ready` (`gh issue edit <N> --remove-label "status:ready"`)
+8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
+   - La CI merge ensuite sans intervention humaine (workflow `Auto-merge agent PRs` en secours)
+9. Commenter l'issue : lien PR + retirer `status:ready` (`gh issue edit <N> --remove-label "status:ready"`)
 
 ### Checklist contenu (nouveau guide)
 
@@ -254,13 +256,13 @@ Rôle : **corriger les problèmes techniques SEO** sans réécriture éditoriale
 - Corriger : liens cassés, pages orphelines, sitemap, structure H1/H2, canonical, titres dupliqués, maillage technique
 - Exécuter `npm run build`, `npm run audit:check` (ou `npm run audit`)
 - Ouvrir une **PR** avec `Fixes #N`
+- Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
 - Commenter l'issue et retirer `status:ready`
 
 ### Ne doit pas faire
 
 - Réécrire le contenu éditorial dans `lib/content/guides.ts` ou `products.ts` (sauf lien technique minimal si la spec le demande)
 - Créer des guides ou produits — rôle du **Content Writer**
-- Merger des PR
 - Traiter plus d'**une issue** par run
 - Ajouter API routes, Server Actions, ou tout ce qui viole l'export statique (voir « Interdictions »)
 
@@ -274,7 +276,8 @@ Rôle : **corriger les problèmes techniques SEO** sans réécriture éditoriale
 5. Branche : `fix/<slug-court>` depuis `main`
 6. Commit _Conventional Commits_
 7. PR avec `Fixes #<N>`
-8. Commenter l'issue + retirer `status:ready`
+8. Activer le merge auto : `gh pr merge <pr> --auto --squash --delete-branch`
+9. Commenter l'issue + retirer `status:ready`
 
 ### Types de fix courants
 
