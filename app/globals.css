@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-cream: #f7f5f0;
+  --color-matcha-50: #f3f7ed;
+  --color-matcha-100: #e4edda;
+  --color-matcha-200: #c9dbb8;
+  --color-matcha-300: #a8c686;
+  --color-matcha-400: #86ab62;
+  --color-matcha-500: #6b8e4e;
+  --color-matcha-600: #537339;
+  --color-matcha-700: #415a2e;
+  --color-matcha-800: #364927;
+  --color-matcha-900: #2e3d22;
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-cream font-sans text-matcha-900 antialiased;
+  }
+}
+
+@utility prose-matcha {
+  @apply prose max-w-none prose-headings:font-semibold prose-headings:text-matcha-900 prose-p:leading-relaxed prose-p:text-matcha-800 prose-a:font-medium prose-a:text-matcha-700 prose-a:no-underline hover:prose-a:underline;
+}
