@@ -17,7 +17,15 @@
 
 # production
 /build
-/reports
+
+# audit, lighthouse & generated reports
+/reports/
+/reports/**
+.lighthouseci/
+lighthouse-*.html
+lighthouse-*.json
+audit-report.json
+internal-linking.json
 
 # misc
 .DS_Store
