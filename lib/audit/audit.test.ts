@@ -17,7 +17,7 @@ import {
 import { hasAuditErrors, runAudit } from "./run";
 import { parseSitemapLocs, urlToRoute, validateSitemap } from "./sitemap";
 
-const SITE_URL = "https://matcha-matcha.fr";
+const SITE_URL = "https://matcha-mignon.com";
 
 function buildSitemap(routes: string[]) {
   const urls = routes
@@ -596,7 +596,7 @@ describe("sitemap audit", () => {
 
 describe("canonicalToRoute", () => {
   it("converts canonical url to route", () => {
-    expect(canonicalToRoute("https://matcha-matcha.fr/guide/test")).toBe(
+    expect(canonicalToRoute("https://matcha-mignon.com/guide/test")).toBe(
       "/guide/test"
     );
     expect(canonicalToRoute("not-a-url")).toBeNull();

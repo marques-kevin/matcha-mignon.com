@@ -157,7 +157,7 @@ function main() {
     process.exit(1);
   }
 
-  const siteUrl = process.env.SITE_URL ?? "https://matcha-matcha.fr";
+  const siteUrl = process.env.SITE_URL ?? "https://matcha-mignon.com";
   const sitemapPath = path.join(OUT_DIR, "sitemap.xml");
   const sitemapXml = fs.existsSync(sitemapPath)
     ? fs.readFileSync(sitemapPath, "utf8")

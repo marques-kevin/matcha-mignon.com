@@ -13,6 +13,8 @@
     "ci": "npm run lint && npm run typecheck && npm run test:run && npm run build && npm run audit:check",
     "audit:check": "tsx scripts/audit-site.ts",
     "audit": "npm run build && npm run audit:check",
+    "pages:deploy": "wrangler pages deploy",
+    "deploy": "npm run build && npm run pages:deploy",
     "commit": "cz",
     "prepare": "husky"
   },
@@ -51,6 +53,7 @@
     "tailwindcss": "^4",
     "tsx": "^4.23.12",
     "typescript": "^5",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "wrangler": "^4.86.0"
   }
 }

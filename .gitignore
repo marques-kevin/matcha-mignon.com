@@ -30,6 +30,7 @@ internal-linking.json
 # misc
 .DS_Store
 *.pem
+.wrangler/
 
 # debug
 npm-debug.log*
