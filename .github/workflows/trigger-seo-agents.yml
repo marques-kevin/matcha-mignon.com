@@ -1,0 +1,61 @@
+name: Trigger SEO agents
+
+# Dispatches Cursor Automations when an issue becomes ready for an agent.
+# Fires once when status:ready pairs with agent:writer or agent:tech — either
+# label order. Other labels (priority, etc.) do not trigger a run.
+# Configure repo secrets after creating webhook automations in Cursor:
+#   CURSOR_WRITER_WEBHOOK_URL / CURSOR_WRITER_WEBHOOK_KEY  → SEO Content Writer
+#   CURSOR_TECH_WEBHOOK_URL   / CURSOR_TECH_WEBHOOK_KEY    → SEO Tech Fixer
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  dispatch-content-writer:
+    name: Content Writer
+    if: >
+      (github.event.label.name == 'status:ready' &&
+        contains(github.event.issue.labels.*.name, 'agent:writer')) ||
+      (github.event.label.name == 'agent:writer' &&
+        contains(github.event.issue.labels.*.name, 'status:ready'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cursor Content Writer automation
+        env:
+          WEBHOOK_URL: ${{ secrets.CURSOR_WRITER_WEBHOOK_URL }}
+          WEBHOOK_KEY: ${{ secrets.CURSOR_WRITER_WEBHOOK_KEY }}
+        run: |
+          if [ -z "$WEBHOOK_URL" ] || [ -z "$WEBHOOK_KEY" ]; then
+            echo "::warning::CURSOR_WRITER_WEBHOOK_URL or CURSOR_WRITER_WEBHOOK_KEY not configured — skipping."
+            exit 0
+          fi
+
+          curl -fsSL -X POST "$WEBHOOK_URL" \
+            -H "Authorization: Bearer $WEBHOOK_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{\"issue_number\": ${{ github.event.issue.number }}, \"repo\": \"${{ github.repository }}\"}"
+
+  dispatch-tech-fixer:
+    name: Tech Fixer
+    if: >
+      (github.event.label.name == 'status:ready' &&
+        contains(github.event.issue.labels.*.name, 'agent:tech')) ||
+      (github.event.label.name == 'agent:tech' &&
+        contains(github.event.issue.labels.*.name, 'status:ready'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cursor Tech Fixer automation
+        env:
+          WEBHOOK_URL: ${{ secrets.CURSOR_TECH_WEBHOOK_URL }}
+          WEBHOOK_KEY: ${{ secrets.CURSOR_TECH_WEBHOOK_KEY }}
+        run: |
+          if [ -z "$WEBHOOK_URL" ] || [ -z "$WEBHOOK_KEY" ]; then
+            echo "::warning::CURSOR_TECH_WEBHOOK_URL or CURSOR_TECH_WEBHOOK_KEY not configured — skipping."
+            exit 0
+          fi
+
+          curl -fsSL -X POST "$WEBHOOK_URL" \
+            -H "Authorization: Bearer $WEBHOOK_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{\"issue_number\": ${{ github.event.issue.number }}, \"repo\": \"${{ github.repository }}\"}"
