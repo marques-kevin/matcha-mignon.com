@@ -158,7 +158,26 @@ Rôle : **chef de projet SEO**. Tu analyses, priorises et crées des **GitHub Is
 - Modifier `lib/content/*`, `app/*`, `components/*` (sauf demande explicite)
 - Ouvrir de PR de contenu — c'est le rôle du **SEO Content Writer**
 - Merger des PR
-- Plus de **3 issues** `status:ready` par semaine (éviter la surcharge)
+- Plus de **3 issues** `status:ready` ouvertes en parallèle (file d'exécution agents)
+
+### Politique `status:ready` (défaut)
+
+**Par défaut**, chaque issue exécutable (`agent:writer` ou `agent:tech`) est créée avec `status:ready` + `priority:high` ou `priority:medium` — le webhook lance Writer/Tech sans action humaine.
+
+**Exception — laisser en `status:backlog`** (ne pas ajouter `status:ready`) si l'impact projet est trop grand :
+
+| Situation                     | Exemple                                                                                  |
+| ----------------------------- | ---------------------------------------------------------------------------------------- |
+| Refonte transversale          | Restructurer `lib/seo.ts`, layout global, template title sur toutes les pages            |
+| Scope multi-fichiers critique | > 5 fichiers hors `lib/content/`, ou changement `app/` + `components/` + contenu         |
+| Risque de régression élevé    | Migration routing, sitemap, changement de structure URL                                  |
+| Spec incomplète               | Donnée GSC manquante, décision éditoriale ou produit non tranchée                        |
+| Dépendance externe            | Credentials, choix humain, validation business                                           |
+| File saturée                  | 3 issues `status:ready` déjà ouvertes → nouvelle issue en `status:backlog` jusqu'à merge |
+
+Pour une issue en backlog à fort impact, documenter dans le body **pourquoi** elle n'est pas `ready` et **quand** la promouvoir.
+
+Issues **Research** (`agent:manager`) : toujours `status:backlog` — jamais `status:ready`.
 
 ### Workflow hebdomadaire
 
@@ -168,7 +187,9 @@ Rôle : **chef de projet SEO**. Tu analyses, priorises et crées des **GitHub Is
 4. `gh issue list --state open --limit 50`
 5. Analyser audit + GSC + backlog existant
 6. Créer ou mettre à jour des issues via les templates (`.github/ISSUE_TEMPLATE/`)
-7. Prioriser : `priority:high` + `status:ready` pour les tâches à exécuter cette semaine
+7. Labelliser chaque issue exécutable :
+   - **Défaut** : `status:ready` + `agent:writer` ou `agent:tech` + `priority:*`
+   - **Si impact trop grand** ou file ≥ 3 ready : `status:backlog` (voir politique ci-dessus)
 8. Commenter un résumé sur l'issue la plus récente de type recherche, ou créer une issue `[Research] Bilan SEO semaine YYYY-Www`
 
 ### Format issue (Content Writer)
@@ -181,21 +202,23 @@ Utiliser le template **Nouveau guide** ou **Améliorer une page**. Chaque issue 
 
 ### Labels à utiliser
 
-| Label                             | Quand                                   |
-| --------------------------------- | --------------------------------------- |
-| `agent:writer` + `type:content`   | Nouveau guide ou produit                |
-| `agent:writer` + `type:meta`      | Optimisation page existante             |
-| `agent:tech` + `type:technical`   | Fix audit (orphelin, lien cassé…)       |
-| `agent:manager` + `type:research` | Analyse avant décision                  |
-| `status:ready`                    | Prête pour exécution par un autre agent |
-| `status:backlog`                  | Identifiée mais pas priorisée           |
-| `status:blocked`                  | Donnée ou décision humaine manquante    |
+| Label                             | Quand                                                   |
+| --------------------------------- | ------------------------------------------------------- |
+| `agent:writer` + `type:content`   | Nouveau guide ou produit                                |
+| `agent:writer` + `type:meta`      | Optimisation page existante                             |
+| `agent:tech` + `type:technical`   | Fix audit (orphelin, lien cassé…)                       |
+| `agent:manager` + `type:research` | Analyse avant décision                                  |
+| `status:ready`                    | **Défaut** pour issues Writer/Tech exécutable (webhook) |
+| `status:backlog`                  | Impact trop grand, spec incomplète, ou file ≥ 3 ready   |
+| `status:blocked`                  | Donnée ou décision humaine manquante                    |
 
 ### Commandes utiles
 
 ```bash
+gh issue list --label "status:ready"
 gh issue list --label "status:ready,agent:writer"
 gh issue create --title "[Content] Guide : ..." --label "agent:writer,type:content,priority:high,status:ready" --body-file issue.md
+gh issue create --title "[Tech] Fix SEO : ..." --label "agent:tech,type:technical,priority:high,status:ready" --body-file issue.md
 gh issue edit 3 --add-label "status:ready" --remove-label "status:backlog"
 ```
 
