@@ -16,7 +16,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Annuaire",
   description:
-    "Annuaire complet de Matcha Matcha : tous les guides, produits et pages du site pour explorer le thé vert japonais.",
+    `Annuaire complet de ${siteConfig.name} : tous les guides, produits et pages du site pour explorer le thé vert japonais.`,
   path: "/annuaire",
   keywords: [
     "annuaire matcha",
@@ -44,7 +44,7 @@ const itemListJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: `Annuaire — ${siteConfig.name}`,
-  description: "Liste de toutes les pages du site Matcha Matcha",
+  description: `Liste de toutes les pages du site ${siteConfig.name}`,
   numberOfItems: directorySections.reduce(
     (sum, section) => sum + section.items.length,
     0

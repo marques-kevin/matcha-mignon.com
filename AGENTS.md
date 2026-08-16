@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guide pour les agents IA travaillant sur **Matcha Matcha** — site statique Next.js sur le thé vert japonais.
+Guide pour les agents IA travaillant sur **Matcha Mignon** — site statique Next.js sur le thé vert japonais.
 
 ## Vue d'ensemble
 
