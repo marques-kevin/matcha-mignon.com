@@ -1,8 +1,7 @@
 name: Agent PR issue sync
 
-# Cursor's GitHub integration cannot comment on issues or edit labels.
-# When an agent opens a PR (content/*, meta/*, fix/*), post the PR link on the
-# linked issue and remove status:ready.
+# Cursor's GitHub integration cannot comment on issues.
+# When an agent opens a PR (content/*, meta/*, fix/*), post the PR link on the linked issue.
 
 on:
   pull_request:
@@ -21,7 +20,7 @@ jobs:
       startsWith(github.head_ref, 'fix/')
     runs-on: ubuntu-latest
     steps:
-      - name: Comment issue and remove status:ready
+      - name: Comment linked issue
         uses: actions/github-script@v7
         with:
           script: |
@@ -42,18 +41,5 @@ jobs:
               owner,
               repo,
               issue_number: issueNumber,
-              body:
-                `PR agent ouverte : ${pr.html_url}\n\n` +
-                `Label \`status:ready\` retiré. L'issue sera fermée au merge.`,
+              body: `PR agent ouverte : ${pr.html_url}`,
             });
-
-            try {
-              await github.rest.issues.removeLabel({
-                owner,
-                repo,
-                issue_number: issueNumber,
-                name: 'status:ready',
-              });
-            } catch (error) {
-              core.warning(`Could not remove status:ready: ${error.message}`);
-            }
