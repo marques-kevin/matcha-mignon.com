@@ -1,7 +1,8 @@
-import { readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { generateGuidesIndex } from "../../scripts/generate-guides-index";
+import { findFirstImage, isImageBlock } from "@/lib/content/blocks";
 import {
   getAllGuideSlugs,
   getGuide,
@@ -160,5 +161,33 @@ describe("public guides API", () => {
         );
       }
     }
+  });
+
+  it("stores image files under public/guides with alt, width and height", () => {
+    const images = guides.flatMap((guide) =>
+      guide.sections.flatMap((section) =>
+        section.content.filter(isImageBlock)
+      )
+    );
+
+    expect(images.length).toBeGreaterThan(0);
+
+    for (const block of images) {
+      expect(block.alt.trim().length).toBeGreaterThan(0);
+      expect(block.width).toBeGreaterThan(0);
+      expect(block.height).toBeGreaterThan(0);
+      expect(block.src).toMatch(/^\/guides\/.+\.(?:jpe?g|png|webp)$/i);
+      expect(existsSync(`public${block.src}`), block.src).toBe(true);
+    }
+  });
+
+  it("uses the first content image of preparer-le-matcha as cover", () => {
+    const guide = getGuide("preparer-le-matcha");
+    const cover = findFirstImage(guide?.sections ?? []);
+
+    expect(cover?.src).toBe(
+      "/guides/preparer-le-matcha/matcha-bol-chasen.jpg"
+    );
+    expect(cover?.alt.length).toBeGreaterThan(10);
   });
 });
