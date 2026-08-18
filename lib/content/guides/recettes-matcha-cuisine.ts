@@ -23,18 +23,18 @@ export const guide: Guide = {
     "conservation-matcha",
   ],
   relatedProducts: [],
+  // CC BY 2.0 Wikimedia: public/guides/recettes-matcha-cuisine/glace-matcha.attribution.txt
+  cover: image(
+    "/guides/recettes-matcha-cuisine/glace-matcha.jpg",
+    "Glace au matcha dans un bol en céramique, pâtisserie et cuisine au matcha",
+    1280,
+    912,
+    "La glace au matcha : un usage culinaire du grade robuste."
+  ),
   sections: [
     {
       heading: "Pourquoi du matcha culinaire en cuisine ?",
       content: [
-        // CC BY 2.0 Wikimedia: public/guides/recettes-matcha-cuisine/glace-matcha.attribution.txt
-        image(
-          "/guides/recettes-matcha-cuisine/glace-matcha.jpg",
-          "Glace au matcha dans un bol en céramique, pâtisserie et cuisine au matcha",
-          1280,
-          912,
-          "La glace au matcha : un usage culinaire du grade robuste."
-        ),
         text(
           "En pâtisserie et en cuisine salée, le matcha doit tenir face aux autres ingrédients — beurre, sucre, lait, farine — sans disparaître ni devenir trop amer. Le "
         ),

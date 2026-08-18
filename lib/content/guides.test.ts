@@ -1,8 +1,8 @@
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { generateGuidesIndex } from "../../scripts/generate-guides-index";
-import { findFirstImage, isImageBlock } from "@/lib/content/blocks";
+import { isImageBlock } from "@/lib/content/blocks";
 import {
   getAllGuideSlugs,
   getGuide,
@@ -162,14 +162,12 @@ describe("public guides API", () => {
     }
   });
 
-  it("stores image files under public/guides with alt, width and height", () => {
+  it("stores in-body image files under public/guides with alt, width and height", () => {
     const images = guides.flatMap((guide) =>
       guide.sections.flatMap((section) =>
         section.content.filter(isImageBlock)
       )
     );
-
-    expect(images.length).toBeGreaterThan(0);
 
     for (const block of images) {
       expect(block.alt.trim().length).toBeGreaterThan(0);
@@ -180,23 +178,43 @@ describe("public guides API", () => {
     }
   });
 
-  it("puts a cover image as the first block of the first section on every guide", () => {
+  it("requires a cover image file with alt, width and height on every guide", () => {
     for (const guide of guides) {
-      const first = guide.sections[0]?.content[0];
-      expect(isImageBlock(first), `${guide.slug} first block`).toBe(true);
-      expect(findFirstImage(guide.sections)?.src).toBe(
-        isImageBlock(first) ? first.src : undefined
+      expect(guide.cover.alt.trim().length).toBeGreaterThan(0);
+      expect(guide.cover.width).toBeGreaterThan(0);
+      expect(guide.cover.height).toBeGreaterThan(0);
+      expect(guide.cover.src).toMatch(/^\/guides\/.+\.(?:jpe?g|png|webp)$/i);
+      expect(existsSync(`public${guide.cover.src}`), guide.cover.src).toBe(
+        true
       );
     }
   });
 
-  it("uses the first content image of preparer-le-matcha as cover", () => {
-    const guide = getGuide("preparer-le-matcha");
-    const cover = findFirstImage(guide?.sections ?? []);
+  it("does not repeat the cover image inside article sections", () => {
+    for (const guide of guides) {
+      const sectionSrcs = guide.sections.flatMap((section) =>
+        section.content.filter(isImageBlock).map((block) => block.src)
+      );
+      expect(sectionSrcs, guide.slug).not.toContain(guide.cover.src);
+    }
+  });
 
-    expect(cover?.src).toBe(
+  it("uses the cover of preparer-le-matcha for OG", () => {
+    const guide = getGuide("preparer-le-matcha");
+
+    expect(guide?.cover.src).toBe(
       "/guides/preparer-le-matcha/matcha-bol-chasen.jpg"
     );
-    expect(cover?.alt.length).toBeGreaterThan(10);
+    expect(guide?.cover.alt.length).toBeGreaterThan(10);
+  });
+});
+
+describe("guide page OG wiring", () => {
+  it("always reads cover and never uses findFirstImage", () => {
+    const source = readFileSync("app/guide/[slug]/page.tsx", "utf8");
+
+    expect(source).not.toContain("findFirstImage");
+    expect(source).toContain("guide.cover");
+    expect(source).toContain('loading="eager"');
   });
 });

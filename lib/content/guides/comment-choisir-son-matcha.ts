@@ -23,18 +23,18 @@ export const guide: Guide = {
     "accessoires-matcha",
   ],
   relatedProducts: [],
+  // CC0 Wikimedia: public/guides/comment-choisir-son-matcha/boites-matcha-boutique.attribution.txt
+  cover: image(
+    "/guides/comment-choisir-son-matcha/boites-matcha-boutique.jpg",
+    "Boîtes de poudre de matcha, bols et fouet chasen en vitrine pour comparer les grades",
+    1280,
+    960,
+    "Boîtes, grades et accessoires : les repères visuels pour choisir son matcha."
+  ),
   sections: [
     {
       heading: "Les critères de qualité à vérifier",
       content: [
-        // CC0 Wikimedia: public/guides/comment-choisir-son-matcha/boites-matcha-boutique.attribution.txt
-        image(
-          "/guides/comment-choisir-son-matcha/boites-matcha-boutique.jpg",
-          "Boîtes de poudre de matcha, bols et fouet chasen en vitrine pour comparer les grades",
-          1280,
-          960,
-          "Boîtes, grades et accessoires : les repères visuels pour choisir son matcha."
-        ),
         text(
           "Avant le prix ou le packaging, trois signaux visuels et gustatifs orientent un bon choix. La couleur doit être vert émeraude intense — un matcha jaunâtre ou brun indique souvent une qualité inférieure ou une oxydation. L'origine compte : Uji, Nishio et Kagoshima produisent des matcha reconnus, mais un bon terroir ne remplace pas un grade adapté à votre usage. Enfin, le grade (cérémonie, culinaire, latte) détermine le profil gustatif et le prix. Pour les bases, commencez par comprendre "
         ),

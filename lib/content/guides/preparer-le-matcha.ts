@@ -18,18 +18,18 @@ export const guide: Guide = {
     "accessoires-matcha",
   ],
   relatedProducts: [],
+  // CC0 Wikimedia: public/guides/preparer-le-matcha/matcha-bol-chasen.attribution.txt
+  cover: image(
+    "/guides/preparer-le-matcha/matcha-bol-chasen.jpg",
+    "Bol de poudre de matcha vert et fouet en bambou (chasen) pour la préparation traditionnelle",
+    1280,
+    853,
+    "Matcha dans un bol, prêt à être fouetté au chasen."
+  ),
   sections: [
     {
       heading: "La méthode traditionnelle",
       content: [
-        // CC0 Wikimedia: public/guides/preparer-le-matcha/matcha-bol-chasen.attribution.txt
-        image(
-          "/guides/preparer-le-matcha/matcha-bol-chasen.jpg",
-          "Bol de poudre de matcha vert et fouet en bambou (chasen) pour la préparation traditionnelle",
-          1280,
-          853,
-          "Matcha dans un bol, prêt à être fouetté au chasen."
-        ),
         text("Tamisez 1 à 2 g de "),
         link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(

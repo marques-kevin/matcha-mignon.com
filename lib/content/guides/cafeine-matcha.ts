@@ -17,18 +17,18 @@ export const guide: Guide = {
   ],
   relatedGuides: ["bienfaits-matcha", "preparer-le-matcha"],
   relatedProducts: [],
+  // CC BY-SA 4.0 Wikimedia: public/guides/cafeine-matcha/bols-matcha-ceremonie.attribution.txt
+  cover: image(
+    "/guides/cafeine-matcha/bols-matcha-ceremonie.jpg",
+    "Deux bols de matcha mousseux servis lors d'une cérémonie du thé",
+    1280,
+    960,
+    "Une tasse de matcha apporte 30 à 70 mg de caféine, libérée plus progressivement que le café."
+  ),
   sections: [
     {
       heading: "Combien de caféine dans une tasse de matcha ?",
       content: [
-        // CC BY-SA 4.0 Wikimedia: public/guides/cafeine-matcha/bols-matcha-ceremonie.attribution.txt
-        image(
-          "/guides/cafeine-matcha/bols-matcha-ceremonie.jpg",
-          "Deux bols de matcha mousseux servis lors d'une cérémonie du thé",
-          1280,
-          960,
-          "Une tasse de matcha apporte 30 à 70 mg de caféine, libérée plus progressivement que le café."
-        ),
         text(
           "Une tasse de matcha (1 à 2 g de poudre pour 70 à 80 ml d'eau) contient généralement 30 à 70 mg de caféine. Trois facteurs font varier ce dosage : le grade — un "
         ),

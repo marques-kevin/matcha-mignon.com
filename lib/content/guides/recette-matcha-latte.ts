@@ -21,18 +21,18 @@ export const guide: Guide = {
     "bienfaits-matcha",
   ],
   relatedProducts: [],
+  // CC BY-SA 4.0 Wikimedia: public/guides/recette-matcha-latte/matcha-latte-tasse.attribution.txt
+  cover: image(
+    "/guides/recette-matcha-latte/matcha-latte-tasse.jpg",
+    "Recette matcha latte en tasse noire avec latte art sur une table en bois",
+    1280,
+    720,
+    "Matcha latte maison : mousse fine et vert émeraude."
+  ),
   sections: [
     {
       heading: "Ingrédients et dosages",
       content: [
-        // CC BY-SA 4.0 Wikimedia: public/guides/recette-matcha-latte/matcha-latte-tasse.attribution.txt
-        image(
-          "/guides/recette-matcha-latte/matcha-latte-tasse.jpg",
-          "Recette matcha latte en tasse noire avec latte art sur une table en bois",
-          1280,
-          720,
-          "Matcha latte maison : mousse fine et vert émeraude."
-        ),
         text(
           "Pour un matcha latte classique, prévoyez 2 g de matcha (environ 1 cuillère à café rase), 30 ml d'eau chaude (75–80 °C), 200 ml de lait végétal ou entier et un sucrant optionnel (miel, sirop d'érable ou sucre de coco). Un "
         ),

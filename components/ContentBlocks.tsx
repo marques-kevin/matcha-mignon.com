@@ -60,21 +60,31 @@ function InlineBlocks({ blocks }: { blocks: InlineBlock[] }) {
   );
 }
 
-function GuideImage({ block }: { block: ImageBlock }) {
+type GuideFigureImage = Pick<
+  ImageBlock,
+  "src" | "alt" | "width" | "height" | "caption"
+>;
+
+type GuideFigureProps = {
+  image: GuideFigureImage;
+  loading?: "eager" | "lazy";
+};
+
+export function GuideFigure({ image, loading = "lazy" }: GuideFigureProps) {
   return (
     <figure>
       {/* Static export: native img, not optimized next/image. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={block.src}
-        alt={block.alt}
-        width={block.width}
-        height={block.height}
-        loading="lazy"
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading={loading}
         decoding="async"
         className="h-auto w-full rounded-lg"
       />
-      {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+      {image.caption ? <figcaption>{image.caption}</figcaption> : null}
     </figure>
   );
 }
@@ -84,7 +94,7 @@ export function ContentBlocks({ blocks }: ContentBlocksProps) {
     <>
       {groupBlocks(blocks).map((group, index) =>
         group.type === "image" ? (
-          <GuideImage key={blockKey(group.block, index)} block={group.block} />
+          <GuideFigure key={blockKey(group.block, index)} image={group.block} />
         ) : (
           <p key={`paragraph-${index}`}>
             <InlineBlocks blocks={group.blocks} />

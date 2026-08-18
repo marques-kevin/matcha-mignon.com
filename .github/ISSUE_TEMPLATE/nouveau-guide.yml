@@ -53,6 +53,14 @@ body:
         Vers : /guide/comment-choisir-son-matcha, /guide/bienfaits-matcha
     validations:
       required: true
+  - type: input
+    id: cover
+    attributes:
+      label: Image de cover (OG)
+      description: Chemin sous public/ (ex. /guides/<slug>/nom-descriptif.jpg). Obligatoire. Unsplash, Pexels ou Wikimedia — pas d'IA.
+      placeholder: "/guides/matcha-bio/champs-the-yame.jpg"
+    validations:
+      required: true
   - type: textarea
     id: acceptance
     attributes:
@@ -60,6 +68,7 @@ body:
       value: |
         - [ ] Fichier `lib/content/guides/<slug>.ts` avec `export const guide`
         - [ ] Title ≤ 60 caractères, description ≤ 160 caractères
+        - [ ] `cover` obligatoire (`src`, `alt` non vide, `width`, `height`) + fichier dans `public/guides/<slug>/`
         - [ ] `relatedGuides` et `relatedProducts` renseignés
         - [ ] `updatedAt` à la date du jour
         - [ ] Audit SEO vert (`npm run audit:check`)
