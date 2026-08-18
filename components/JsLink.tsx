@@ -8,12 +8,14 @@ type JsLinkProps = {
   path: string;
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 };
 
-export function JsLink({ path, children, className }: JsLinkProps) {
+export function JsLink({ path, children, className, onClick }: JsLinkProps) {
   const router = useRouter();
 
   const navigate = () => {
+    onClick?.();
     router.push(path);
   };
 
