@@ -20,8 +20,8 @@ export function buildMetadata({
   publishedAt,
   updatedAt,
 }: PageSeo): Metadata {
-  const url = `${siteConfig.url}${path}`;
   const isHome = path === "/";
+  const url = `${siteConfig.url}${isHome ? "" : path}`;
   const pageTitle = isHome ? `${siteConfig.name} — ${siteConfig.tagline}` : title;
   const socialTitle = isHome ? pageTitle : `${title} | ${siteConfig.name}`;
 

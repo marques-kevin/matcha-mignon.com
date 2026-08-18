@@ -8,6 +8,7 @@ import {
   guides,
   type Guide,
 } from "@/lib/content/guides";
+import { getAllProductSlugs } from "@/lib/content/products";
 
 const GUIDES_DIR = join(import.meta.dirname, "guides");
 
@@ -116,5 +117,48 @@ describe("guides loader", () => {
     const first = generateGuidesIndex();
     const second = generateGuidesIndex();
     expect(second).toBe(first);
+  });
+});
+
+const KEBAB_CASE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+describe("public guides API", () => {
+  it("returns unique, kebab-case, non-empty slugs", () => {
+    const slugs = getAllGuideSlugs();
+
+    expect(slugs.length).toBeGreaterThan(0);
+    expect(new Set(slugs).size).toBe(slugs.length);
+
+    for (const slug of slugs) {
+      expect(slug.length).toBeGreaterThan(0);
+      expect(slug).toMatch(KEBAB_CASE);
+    }
+  });
+
+  it("finds each slug and returns undefined for an unknown slug", () => {
+    for (const slug of getAllGuideSlugs()) {
+      expect(getGuide(slug)?.slug).toBe(slug);
+    }
+
+    expect(getGuide("slug-inconnu")).toBeUndefined();
+  });
+
+  it("points relatedGuides and relatedProducts at existing slugs", () => {
+    const guideSlugs = new Set(getAllGuideSlugs());
+    const productSlugs = new Set(getAllProductSlugs());
+
+    for (const guide of guides) {
+      for (const related of guide.relatedGuides) {
+        expect(guideSlugs.has(related), `${guide.slug} → ${related}`).toBe(
+          true
+        );
+      }
+
+      for (const related of guide.relatedProducts) {
+        expect(productSlugs.has(related), `${guide.slug} → ${related}`).toBe(
+          true
+        );
+      }
+    }
   });
 });
