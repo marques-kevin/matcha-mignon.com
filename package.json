@@ -24,7 +24,9 @@
     "pages:deploy": "wrangler pages deploy",
     "deploy": "npm run build && npm run pages:deploy",
     "commit": "cz",
-    "prepare": "husky && npm run generate:guides"
+    "prepare": "husky && npm run generate:guides",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "*.{ts,tsx,js,mjs}": [
@@ -46,6 +48,8 @@
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-docs": "^10.5.9",
+    "@storybook/nextjs-vite": "^10.5.9",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -55,14 +59,17 @@
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^17.2.1",
     "eslint": "^9",
-    "googleapis": "^156.0.0",
     "eslint-config-next": "^15.5.0",
+    "eslint-plugin-storybook": "^10.5.9",
+    "googleapis": "^156.0.0",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "lint-staged": "^16.4.0",
+    "storybook": "^10.5.9",
     "tailwindcss": "^4",
     "tsx": "^4.23.12",
     "typescript": "^5",
+    "vite": "^8.2.1",
     "vitest": "^4.1.10",
     "wrangler": "^4.86.0"
   }

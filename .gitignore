@@ -49,3 +49,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# storybook (never ship in the static Next export)
+*storybook.log
+storybook-static/
