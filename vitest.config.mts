@@ -8,7 +8,6 @@ export default defineConfig({
     environment: "jsdom",
     include: ["**/*.{test,spec}.{ts,tsx}"],
     exclude: ["node_modules", ".next", "out", "storybook-static"],
-    passWithNoTests: true,
   },
   resolve: {
     alias: {
