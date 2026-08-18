@@ -47,6 +47,7 @@ export const products: Product[] = [
       "qu-est-ce-que-le-matcha",
       "preparer-le-matcha",
       "comment-choisir-son-matcha",
+      "recettes-matcha-cuisine",
     ],
     relatedProducts: ["matcha-ceremonie", "matcha-latte"],
     highlights: [
