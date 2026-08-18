@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generate:guides": "tsx scripts/generate-guides-index.ts",
+    "predev": "npm run generate:guides",
+    "prebuild": "npm run generate:guides",
+    "prelint": "npm run generate:guides",
+    "pretypecheck": "npm run generate:guides",
+    "pretest": "npm run generate:guides",
+    "pretest:run": "npm run generate:guides",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "npx serve out",
@@ -17,7 +24,7 @@
     "pages:deploy": "wrangler pages deploy",
     "deploy": "npm run build && npm run pages:deploy",
     "commit": "cz",
-    "prepare": "husky"
+    "prepare": "husky && npm run generate:guides"
   },
   "lint-staged": {
     "*.{ts,tsx,js,mjs}": [
