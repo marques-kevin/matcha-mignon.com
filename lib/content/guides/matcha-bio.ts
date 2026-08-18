@@ -12,18 +12,18 @@ export const guide: Guide = {
   keywords: ["matcha bio", "thé vert bio", "matcha biologique"],
   relatedGuides: ["qu-est-ce-que-le-matcha", "preparer-le-matcha"],
   relatedProducts: [],
+  // CC BY-SA 3.0 Wikimedia: public/guides/matcha-bio/champs-the-yame.attribution.txt
+  cover: image(
+    "/guides/matcha-bio/champs-the-yame.jpg",
+    "Champs de thé vert à Yame au Japon, culture du matcha bio",
+    1280,
+    923,
+    "Plantation de thé à Yame : le matcha bio commence dans les champs."
+  ),
   sections: [
     {
       heading: "Qu'est-ce que le matcha bio ?",
       content: [
-        // CC BY-SA 3.0 Wikimedia: public/guides/matcha-bio/champs-the-yame.attribution.txt
-        image(
-          "/guides/matcha-bio/champs-the-yame.jpg",
-          "Champs de thé vert à Yame au Japon, culture du matcha bio",
-          1280,
-          923,
-          "Plantation de thé à Yame : le matcha bio commence dans les champs."
-        ),
         text(
           "Un matcha bio est issu d'une culture certifiée selon le règlement européen sur l'agriculture biologique (label AB en France). Concrètement, cela signifie : pas de pesticides de synthèse, pas d'engrais chimiques, et un contrôle annuel par un organisme certificateur indépendant. Le "
         ),

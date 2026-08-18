@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { ContentBlocks } from "@/components/ContentBlocks";
+import { ContentBlocks, GuideFigure } from "@/components/ContentBlocks";
 import { JsonLd } from "@/components/JsonLd";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { Page, PageHeader, Prose } from "@/components/ui";
-import { findFirstImage } from "@/lib/content/blocks";
 import { getAllGuideSlugs, getGuide, guides } from "@/lib/content/guides";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
@@ -22,8 +21,6 @@ export async function generateMetadata({ params }: Props) {
   const guide = getGuide(slug);
   if (!guide) return {};
 
-  const cover = findFirstImage(guide.sections);
-
   return buildMetadata({
     title: guide.title,
     description: guide.description,
@@ -32,14 +29,12 @@ export async function generateMetadata({ params }: Props) {
     type: "article",
     publishedAt: guide.publishedAt,
     updatedAt: guide.updatedAt,
-    ...(cover && {
-      image: {
-        src: cover.src,
-        alt: cover.alt,
-        width: cover.width,
-        height: cover.height,
-      },
-    }),
+    image: {
+      src: guide.cover.src,
+      alt: guide.cover.alt,
+      width: guide.cover.width,
+      height: guide.cover.height,
+    },
   });
 }
 
@@ -54,8 +49,6 @@ export default async function GuidePage({ params }: Props) {
       return g ? { href: `/guide/${g.slug}`, label: g.title } : null;
     })
     .filter(Boolean) as { href: string; label: string }[];
-
-  const cover = findFirstImage(guide.sections);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -73,7 +66,7 @@ export default async function GuidePage({ params }: Props) {
     mainEntityOfPage: `${siteConfig.url}/guide/${guide.slug}`,
     inLanguage: "fr-FR",
     keywords: guide.keywords.join(", "),
-    ...(cover && { image: `${siteConfig.url}${cover.src}` }),
+    image: `${siteConfig.url}${guide.cover.src}`,
   };
 
   const breadcrumbJsonLd = {
@@ -123,6 +116,7 @@ export default async function GuidePage({ params }: Props) {
         />
 
         <Prose className="mt-10">
+          <GuideFigure image={guide.cover} loading="eager" />
           {guide.sections.map((section) => (
             <section key={section.heading}>
               <h2>{section.heading}</h2>

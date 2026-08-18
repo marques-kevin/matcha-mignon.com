@@ -1,4 +1,10 @@
-import type { ContentSection } from "../types";
+import type { ContentSection, ImageBlock } from "../types";
+
+/**
+ * Cover image for OG / Twitter / Article JSON-LD.
+ * Same shape as an `image()` block, without the discriminant.
+ */
+export type GuideCover = Omit<ImageBlock, "type">;
 
 /**
  * One article per file in this folder: `lib/content/guides/<slug>.ts`
@@ -14,5 +20,6 @@ export type Guide = {
   keywords: string[];
   relatedGuides: string[];
   relatedProducts: string[];
+  cover: GuideCover;
   sections: ContentSection[];
 };

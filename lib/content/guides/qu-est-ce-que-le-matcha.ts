@@ -25,18 +25,18 @@ export const guide: Guide = {
     "cafeine-matcha",
   ],
   relatedProducts: [],
+  // CC0 Wikimedia: public/guides/qu-est-ce-que-le-matcha/bol-poudre-matcha.attribution.txt
+  cover: image(
+    "/guides/qu-est-ce-que-le-matcha/bol-poudre-matcha.jpg",
+    "Bol de poudre de matcha vert, thé matcha fouetté, feuille de thé et fouet chasen",
+    1280,
+    854,
+    "Poudre de matcha, tasse préparée et chasen : le thé vert japonais en un regard."
+  ),
   sections: [
     {
       heading: "Une poudre de thé vert millénaire",
       content: [
-        // CC0 Wikimedia: public/guides/qu-est-ce-que-le-matcha/bol-poudre-matcha.attribution.txt
-        image(
-          "/guides/qu-est-ce-que-le-matcha/bol-poudre-matcha.jpg",
-          "Bol de poudre de matcha vert, thé matcha fouetté, feuille de thé et fouet chasen",
-          1280,
-          854,
-          "Poudre de matcha, tasse préparée et chasen : le thé vert japonais en un regard."
-        ),
         text(
           "Le matcha est une poudre fine obtenue à partir de feuilles de théier ombragées, broyées à la pierre. Contrairement au thé infusé, on consomme la feuille entière, ce qui concentre les nutriments et la caféine — voir notre guide sur la "
         ),

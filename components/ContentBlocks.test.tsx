@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { ContentBlocks } from "./ContentBlocks";
+import { ContentBlocks, GuideFigure } from "./ContentBlocks";
 import { image, link, text } from "@/lib/content/blocks";
 
 describe("ContentBlocks", () => {
@@ -46,5 +46,19 @@ describe("ContentBlocks", () => {
 
     expect(html).toContain("<figure>");
     expect(html).not.toContain("<figcaption>");
+  });
+
+  it("renders the cover figure with eager loading", () => {
+    const html = renderToStaticMarkup(
+      <GuideFigure
+        image={image("/guides/foo/cover.jpg", "Cover", 1280, 720)}
+        loading="eager"
+      />
+    );
+
+    expect(html).toContain("<figure>");
+    expect(html).toContain('loading="eager"');
+    expect(html).toContain('src="/guides/foo/cover.jpg"');
+    expect(html).not.toContain('loading="lazy"');
   });
 });
