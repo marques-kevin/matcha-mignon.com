@@ -58,8 +58,8 @@ describe("header, footer, and logo chrome", () => {
     expect(source).toContain("obfuscated");
     expect(source).toContain('variant="nav"');
     expect(source).toContain("/guide");
-    expect(source).toContain("/produits");
     expect(source).toContain("/a-propos");
+    expect(source).not.toContain("/produits");
   });
 
   it("mobile nav is a disclosure with semantic tokens", () => {

@@ -1,5 +1,4 @@
 import { guides } from "./guides";
-import { products } from "./products";
 
 export type DirectorySection = {
   title: string;
@@ -17,16 +16,6 @@ export const directorySections: DirectorySection[] = [
       href: `/guide/${guide.slug}`,
       label: guide.title,
       description: guide.description,
-    })),
-  },
-  {
-    title: "Produits",
-    href: "/produits",
-    description: "Notre sélection de matcha japonais.",
-    items: products.map((product) => ({
-      href: `/produits/${product.slug}`,
-      label: product.title,
-      description: product.description,
     })),
   },
   {

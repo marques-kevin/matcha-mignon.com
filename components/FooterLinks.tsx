@@ -16,11 +16,6 @@ const footerLinks = {
       label: "Choisir son matcha",
     },
   ],
-  produits: [
-    { path: "/produits/matcha-ceremonie", label: "Matcha Cérémonie" },
-    { path: "/produits/matcha-culinaire", label: "Matcha Culinaire" },
-    { path: "/produits/matcha-latte", label: "Matcha Latte" },
-  ],
 };
 
 type FooterLinksProps = {
@@ -60,17 +55,10 @@ function FooterColumn({
 
 export function FooterLinks({ obfuscated = true }: FooterLinksProps) {
   return (
-    <>
-      <FooterColumn
-        title="Guides"
-        links={footerLinks.guides}
-        obfuscated={obfuscated}
-      />
-      <FooterColumn
-        title="Produits"
-        links={footerLinks.produits}
-        obfuscated={obfuscated}
-      />
-    </>
+    <FooterColumn
+      title="Guides"
+      links={footerLinks.guides}
+      obfuscated={obfuscated}
+    />
   );
 }

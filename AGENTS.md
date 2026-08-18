@@ -4,7 +4,7 @@ Guide pour les agents IA travaillant sur **Matcha Mignon** — site statique Nex
 
 ## Vue d'ensemble
 
-Site éditorial en français (guides + produits) conçu pour le SEO. Objectif long terme : s'auto-améliorer via des données externes (GSC, APIs SEO) et un audit interne automatisé (balises, structure, liens).
+Site éditorial en français (guides) conçu pour le SEO. Objectif long terme : s'auto-améliorer via des données externes (GSC, APIs SEO) et un audit interne automatisé (balises, structure, liens).
 
 **Contrainte majeure** : export 100 % statique. Pas de serveur Node en production.
 
@@ -33,7 +33,6 @@ npm run generate:guides  # Régénère lib/content/guides/index.ts (pré-hook de
 ```
 app/                    # Pages Next.js (App Router)
   guide/[slug]/         # Articles guides
-  produits/[slug]/      # Fiches produits
   sitemap.ts            # Sitemap XML
   robots.ts             # robots.txt
   globals.css           # Thème Tailwind (@theme, @utility)
@@ -46,8 +45,7 @@ lib/
     guides/             # Un fichier TS par guide (`<slug>.ts`)
       types.ts          # Type `Guide`
       index.ts          # Généré — ne pas éditer
-    products.ts         # Données produits
-public/                 # Assets statiques
+public/                 # Assets statiques (`_redirects` Cloudflare Pages)
 out/                    # Build généré (ne pas éditer)
 ```
 
@@ -74,10 +72,10 @@ out/                    # Build généré (ne pas éditer)
 ### Contenu
 
 - Guides : un fichier par article dans `lib/content/guides/<slug>.ts` (`export const guide`)
-- Produits : `lib/content/products.ts`
 - Chaque entrée a : `slug`, `title`, `description`, `keywords`, liens relatifs
 - Slugs en kebab-case français (`preparer-le-matcha`) — pour un guide, le nom de fichier **est** le slug
-- Images de guide : bloc `image()` (voir « Images dans un guide ») — pas d’images générées par IA pour les produits
+- Images de guide : bloc `image()` (voir « Images dans un guide »)
+- Pas de fiches `/produits` tant qu'il n'y a pas d'URL d'achat réelle (affiliation future). `relatedProducts` peut rester vide sur le type `Guide`.
 
 ## Ajouter une page
 
@@ -85,7 +83,7 @@ out/                    # Build généré (ne pas éditer)
 
 1. Créer `lib/content/guides/<slug>.ts` avec `export const guide: Guide` (le slug doit matcher le nom de fichier)
 2. Ne **pas** éditer d'index / barrel : le dossier est la source de vérité (`npm run generate:guides` tourne tout seul avant `dev` / `build` / `typecheck`)
-3. Renseigner `relatedGuides` et `relatedProducts` pour le maillage interne
+3. Renseigner `relatedGuides` (et `relatedProducts: []` tant qu'il n'y a pas d'affiliation)
 4. La route `/guide/[slug]` est générée automatiquement via `generateStaticParams`
 5. Mettre à jour les liens du footer (`components/Footer.tsx`) si page importante
 6. Illustrer si pertinent : voir « Images dans un guide »
@@ -101,13 +99,7 @@ out/                    # Build généré (ne pas éditer)
 3. La première image du guide alimente `og:image` et `Article.image`
 4. **Sources autorisées** : Unsplash, Pexels, Wikimedia Commons (photos réelles)
 5. Conserver la licence à côté du fichier (`*.attribution.txt`) **ou** en commentaire dans le TS (auteur, licence, URL)
-6. **Interdit** : images générées par IA, surtout pour les produits
-
-### Nouveau produit
-
-1. Ajouter l'entrée dans `lib/content/products.ts`
-2. Renseigner `relatedGuides` et `relatedProducts`
-3. La route `/produits/[slug]` est générée automatiquement
+6. **Interdit** : images générées par IA
 
 ## SEO — obligations
 
@@ -115,7 +107,7 @@ Chaque page **doit** avoir :
 
 - `buildMetadata()` avec title, description, path, keywords
 - URL canonique (géré par `buildMetadata`)
-- JSON-LD adapté (Article, Product, BreadcrumbList)
+- JSON-LD adapté (Article, BreadcrumbList — pas de `Product` / `Offer` sans URL d'achat réelle)
 - Fil d'Ariane (`<Breadcrumb>`)
 - Un seul `<h1>` par page
 - Liens internes vers contenu connexe (`<RelatedLinks>`)
@@ -222,7 +214,7 @@ Utiliser le template **Nouveau guide** ou **Améliorer une page**. Chaque issue 
 
 | Label                             | Quand                                                   |
 | --------------------------------- | ------------------------------------------------------- |
-| `agent:writer` + `type:content`   | Nouveau guide ou produit                                |
+| `agent:writer` + `type:content`   | Nouveau guide                                |
 | `agent:writer` + `type:meta`      | Optimisation page existante                             |
 | `agent:tech` + `type:technical`   | Fix audit (orphelin, lien cassé…)                       |
 | `agent:manager` + `type:research` | Analyse avant décision                                  |
@@ -270,9 +262,9 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 
 ### Peut faire
 
-- Modifier `lib/content/guides/<slug>.ts`, `lib/content/products.ts` et `lib/content/blocks.ts` si besoin
+- Modifier `lib/content/guides/<slug>.ts` et `lib/content/blocks.ts` si besoin
 - Optimiser meta et contenu des pages existantes (`type:meta`)
-- Ajouter le maillage interne : `relatedGuides` / `relatedProducts` dans le contenu, liens depuis d'autres guides ou pages listing
+- Ajouter le maillage interne : `relatedGuides` / `relatedProducts` (laisser `relatedProducts: []` tant qu'il n'y a pas d'URL d'achat)
 - Mettre à jour `components/FooterLinks.tsx` si la page est importante (cf. spec issue)
 - Exécuter `npm run build`, `npm run audit:check` (ou `npm run audit`)
 - Ouvrir une **PR** avec `Fixes #N` dans le body
@@ -295,7 +287,7 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
    - Si le webhook a fourni `issue_number`, utiliser ce numéro en priorité
 2. Lire la spec complète : `gh issue view <N> --json title,body,labels`
 3. Implémenter selon le type :
-   - `type:content` → nouveau guide ou produit (voir « Ajouter une page » + template **Nouveau guide**)
+   - `type:content` → nouveau guide (voir « Ajouter une page » + template **Nouveau guide**)
    - `type:meta` → optimiser page existante (template **Améliorer une page**)
 4. Vérifier : `npm run build && npm run audit:check` — audit doit être vert
 5. Branche : `content/<slug>` ou `meta/<slug>` depuis `main`
@@ -305,9 +297,9 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 
 ### Checklist contenu (nouveau guide)
 
-- [ ] Fichier `lib/content/guides/<slug>.ts` avec `export const guide` (ou entrée dans `products.ts`)
+- [ ] Fichier `lib/content/guides/<slug>.ts` avec `export const guide`
 - [ ] `title` ≤ 60 car., `description` ≤ 160 car.
-- [ ] `keywords`, `relatedGuides`, `relatedProducts`, `updatedAt` (date du jour)
+- [ ] `keywords`, `relatedGuides`, `relatedProducts: []`, `updatedAt` (date du jour)
 - [ ] Maillage interne depuis/vers les pages indiquées dans la spec
 - [ ] Si image : `image()` avec `alt` non vide, fichier dans `public/guides/<slug>/`, licence enregistrée (Unsplash / Pexels / Wikimedia — pas d’IA)
 - [ ] `npm run audit:check` vert
@@ -328,8 +320,8 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 
 ### Ne doit pas faire
 
-- Réécrire le contenu éditorial dans `lib/content/guides/` ou `products.ts` (sauf lien technique minimal si la spec le demande)
-- Créer des guides ou produits — rôle du **Content Writer**
+- Réécrire le contenu éditorial dans `lib/content/guides/` (sauf lien technique minimal si la spec le demande)
+- Créer des guides ou des fiches produits — rôle du **Content Writer**
 - Traiter plus d'**une issue** par run
 - Ajouter API routes, Server Actions, ou tout ce qui viole l'export statique (voir « Interdictions »)
 - **S'arrêter après l'ouverture de la PR** — attendre CI et merger
@@ -364,7 +356,6 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 | `lib/site.ts`             | URL du site, nom, locale — modifier avant déploiement |
 | `lib/seo.ts`              | Metadata et Open Graph                                |
 | `lib/content/guides/`     | Un fichier TS par guide (`<slug>.ts`)                 |
-| `lib/content/products.ts` | Tous les produits                                     |
 | `app/globals.css`         | Thème Tailwind                                        |
 | `next.config.ts`          | Config export statique                                |
 

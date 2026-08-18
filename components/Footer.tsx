@@ -10,7 +10,7 @@ type FooterProps = {
 export function Footer({ obfuscated = true }: FooterProps) {
   return (
     <footer className="border-t border-border/60 bg-inverse text-on-inverse">
-      <Container className="grid gap-10 py-12 sm:grid-cols-3">
+      <Container className="grid gap-10 py-12 sm:grid-cols-2">
         <div>
           <Logo linked={false} showMark={false} tone="inverse" />
           <Text variant="muted" className="mt-2 text-on-inverse-muted">

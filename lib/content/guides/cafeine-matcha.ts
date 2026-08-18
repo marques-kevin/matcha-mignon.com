@@ -16,7 +16,7 @@ export const guide: Guide = {
     "L-théanine",
   ],
   relatedGuides: ["bienfaits-matcha", "preparer-le-matcha"],
-  relatedProducts: ["matcha-ceremonie", "matcha-latte"],
+  relatedProducts: [],
   sections: [
     {
       heading: "Combien de caféine dans une tasse de matcha ?",
@@ -24,7 +24,7 @@ export const guide: Guide = {
         text(
           "Une tasse de matcha (1 à 2 g de poudre pour 70 à 80 ml d'eau) contient généralement 30 à 70 mg de caféine. Trois facteurs font varier ce dosage : le grade — un "
         ),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
           " de première récolte est souvent un peu plus riche qu'un grade culinaire —, la quantité de poudre (2 g apportent environ le double d'1 g) et la température de l'eau. Plus l'eau est chaude, plus l'extraction est rapide : restez autour de 75–80 °C, comme expliqué dans notre guide "
         ),
@@ -56,9 +56,9 @@ export const guide: Guide = {
         text(
           "Le meilleur moment : le matin ou en début d'après-midi, et 30 à 45 minutes avant un effort sportif ou une session de concentration. Évitez le soir si vous êtes sensible à la caféine — la L-théanine adoucit l'effet, mais 30 à 70 mg restent suffisants pour retarder l'endormissement. Pour un rituel quotidien, privilégiez un "
         ),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(" ; pour un latte plus copieux, un "),
-        link("/produits/matcha-latte", "blend matcha latte"),
+        link("/guide/recette-matcha-latte", "blend matcha latte"),
         text(
           ". Une à deux tasses par jour suffisent pour la plupart des adultes."
         ),

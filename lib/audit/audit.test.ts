@@ -52,7 +52,7 @@ function buildHtml(
     lang = "fr",
     h1 = "Guide matcha",
     extraH1 = false,
-    links = ["/", "/produits"],
+    links = ["/", "/guide"],
     jsonLd = '{"@type":"Article","headline":"Guide matcha"}',
     og = {
       title: "Guide matcha",
@@ -375,18 +375,18 @@ describe("internal linking", () => {
   });
 
   it("computes normalized link juice scores", () => {
-    const pages = ["/", "/guide", "/produits"];
+    const pages = ["/", "/guide", "/annuaire"];
     const outbound = new Map<string, Set<string>>([
-      ["/", new Set(["/guide", "/produits"])],
+      ["/", new Set(["/guide", "/annuaire"])],
       ["/guide", new Set(["/"])],
-      ["/produits", new Set(["/"])],
+      ["/annuaire", new Set(["/"])],
     ]);
 
     const scores = normalizeLinkJuiceScores(computeLinkJuice(pages, outbound));
 
     expect(scores.get("/")).toBe(100);
     expect(scores.get("/guide")).toBeGreaterThan(0);
-    expect(scores.get("/produits")).toBeGreaterThan(0);
+    expect(scores.get("/annuaire")).toBeGreaterThan(0);
   });
 
   it("includes crawl depth and link juice in audit report", () => {

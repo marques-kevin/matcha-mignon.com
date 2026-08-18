@@ -22,7 +22,7 @@ export const guide: Guide = {
     "matcha-bio",
     "cafeine-matcha",
   ],
-  relatedProducts: ["matcha-ceremonie", "matcha-latte"],
+  relatedProducts: [],
   sections: [
     {
       heading: "Riche en antioxydants",
@@ -50,7 +50,7 @@ export const guide: Guide = {
         text(
           "Une à deux tasses par jour suffisent pour la plupart des adultes. Pour la dégustation quotidienne, privilégiez un "
         ),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
           " de qualité. Évitez le matcha en fin de journée si vous êtes sensible à la caféine (environ 30–70 mg par tasse)."
         ),

@@ -37,7 +37,7 @@ body:
     id: fix
     attributes:
       label: Fix attendu
-      placeholder: "Ajouter un lien depuis /guide et /produits vers /annuaire"
+      placeholder: "Ajouter un lien depuis /guide et /a-propos vers /annuaire"
     validations:
       required: true
   - type: textarea

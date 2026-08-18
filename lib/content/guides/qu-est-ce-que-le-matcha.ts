@@ -24,7 +24,7 @@ export const guide: Guide = {
     "recettes-matcha-cuisine",
     "cafeine-matcha",
   ],
-  relatedProducts: ["matcha-ceremonie", "matcha-culinaire"],
+  relatedProducts: [],
   sections: [
     {
       heading: "Une poudre de thé vert millénaire",
@@ -40,11 +40,11 @@ export const guide: Guide = {
       heading: "Cérémonie ou cuisine ?",
       content: [
         text("Le "),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
           " (ceremonial grade) est récolté au printemps, plus doux et umami. Le "
         ),
-        link("/produits/matcha-culinaire", "matcha culinaire"),
+        link("/guide/recettes-matcha-cuisine", "matcha culinaire"),
         text(
           " (culinary grade) est plus robuste, idéal pour les lattes, smoothies et pâtisseries. Pour des idées concrètes en cuisine, consultez nos "
         ),

@@ -50,7 +50,7 @@ body:
       description: Pages à lier depuis et vers ce guide
       placeholder: |
         Depuis : /guide, /guide/qu-est-ce-que-le-matcha
-        Vers : /produits/matcha-ceremonie, /guide/bienfaits-matcha
+        Vers : /guide/comment-choisir-son-matcha, /guide/bienfaits-matcha
     validations:
       required: true
   - type: textarea
