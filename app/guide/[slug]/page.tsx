@@ -4,6 +4,7 @@ import { ContentBlocks } from "@/components/ContentBlocks";
 import { JsonLd } from "@/components/JsonLd";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { Grid, Page, PageHeader, Prose } from "@/components/ui";
+import { findFirstImage } from "@/lib/content/blocks";
 import { getAllGuideSlugs, getGuide, guides } from "@/lib/content/guides";
 import { getProduct } from "@/lib/content/products";
 import { buildMetadata } from "@/lib/seo";
@@ -22,6 +23,8 @@ export async function generateMetadata({ params }: Props) {
   const guide = getGuide(slug);
   if (!guide) return {};
 
+  const cover = findFirstImage(guide.sections);
+
   return buildMetadata({
     title: guide.title,
     description: guide.description,
@@ -30,6 +33,14 @@ export async function generateMetadata({ params }: Props) {
     type: "article",
     publishedAt: guide.publishedAt,
     updatedAt: guide.updatedAt,
+    ...(cover && {
+      image: {
+        src: cover.src,
+        alt: cover.alt,
+        width: cover.width,
+        height: cover.height,
+      },
+    }),
   });
 }
 
@@ -52,6 +63,8 @@ export default async function GuidePage({ params }: Props) {
     })
     .filter(Boolean) as { href: string; label: string }[];
 
+  const cover = findFirstImage(guide.sections);
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -68,6 +81,7 @@ export default async function GuidePage({ params }: Props) {
     mainEntityOfPage: `${siteConfig.url}/guide/${guide.slug}`,
     inLanguage: "fr-FR",
     keywords: guide.keywords.join(", "),
+    ...(cover && { image: `${siteConfig.url}${cover.src}` }),
   };
 
   const breadcrumbJsonLd = {
@@ -120,9 +134,7 @@ export default async function GuidePage({ params }: Props) {
           {guide.sections.map((section) => (
             <section key={section.heading}>
               <h2>{section.heading}</h2>
-              <p>
-                <ContentBlocks blocks={section.content} />
-              </p>
+              <ContentBlocks blocks={section.content} />
             </section>
           ))}
         </Prose>

@@ -1,4 +1,4 @@
-import { link, text } from "../blocks";
+import { image, link, text } from "../blocks";
 import type { Guide } from "./types";
 
 export const guide: Guide = {
@@ -25,6 +25,14 @@ export const guide: Guide = {
         link("/produits/matcha-ceremonie", "matcha de cérémonie"),
         text(
           " dans un bol (chawan). Ajoutez 70 ml d'eau à 75–80 °C — jamais bouillante. Fouettez en M avec un chasen pendant 20 secondes jusqu'à obtenir une mousse fine."
+        ),
+        // CC0 Wikimedia: public/guides/preparer-le-matcha/matcha-bol-chasen.attribution.txt
+        image(
+          "/guides/preparer-le-matcha/matcha-bol-chasen.jpg",
+          "Bol de poudre de matcha vert et fouet en bambou (chasen) pour la préparation traditionnelle",
+          1280,
+          853,
+          "Matcha dans un bol, prêt à être fouetté au chasen."
         ),
       ],
     },
