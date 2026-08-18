@@ -17,6 +17,7 @@ export const guide: Guide = {
   ],
   relatedGuides: [
     "preparer-le-matcha",
+    "ceremonie-du-the-matcha",
     "conservation-matcha",
     "bienfaits-matcha",
     "matcha-bio",
@@ -50,8 +51,10 @@ export const guide: Guide = {
         text("Le "),
         link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
-          " (ceremonial grade) est récolté au printemps, plus doux et umami. Le "
+          " (ceremonial grade) est récolté au printemps, plus doux et umami — c'est cette poudre que l'on fouette lors de la "
         ),
+        link("/guide/ceremonie-du-the-matcha", "cérémonie du thé matcha"),
+        text(" (chanoyu). Le "),
         link("/guide/recettes-matcha-cuisine", "matcha culinaire"),
         text(
           " (culinary grade) est plus robuste, idéal pour les lattes, smoothies et pâtisseries. Pour des idées concrètes en cuisine, consultez nos "

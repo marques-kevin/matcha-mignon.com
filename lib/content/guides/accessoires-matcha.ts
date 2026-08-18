@@ -10,7 +10,11 @@ export const guide: Guide = {
   publishedAt: "2026-08-18",
   updatedAt: "2026-08-19",
   keywords: ["fouet matcha", "chasen", "accessoires matcha"],
-  relatedGuides: ["preparer-le-matcha", "comment-choisir-son-matcha"],
+  relatedGuides: [
+    "preparer-le-matcha",
+    "ceremonie-du-the-matcha",
+    "comment-choisir-son-matcha",
+  ],
   relatedProducts: [],
   // CC BY-SA 4.0 Wikimedia: public/guides/accessoires-matcha/fouets-chasen-bambou.attribution.txt
   cover: image(
@@ -25,7 +29,11 @@ export const guide: Guide = {
       heading: "Quel fouet matcha (chasen) choisir ?",
       content: [
         text(
-          "Le fouet matcha, ou chasen, est un fouet en bambou dont les dents aèrent la poudre dans l'eau. Le chiffre indiqué — 80, 100 ou 120 — correspond au nombre de dents : 80 dents pour le koicha (thé épais, geste plus lent), 100 dents pour un usage polyvalent au quotidien, 120 dents pour l'usucha (thé léger) et une mousse plus fine. Pour débuter, un chasen 100 dents en bambou blanc suffit largement. Vérifiez que les dents sont souples, régulières, et que le manche n'est pas fendu. Un fouet trop rigide ou trop lâche ne montera pas la mousse."
+          "Le fouet matcha, ou chasen, est un fouet en bambou dont les dents aèrent la poudre dans l'eau — l'accessoire central de la "
+        ),
+        link("/guide/ceremonie-du-the-matcha", "cérémonie du thé matcha"),
+        text(
+          ". Le chiffre indiqué — 80, 100 ou 120 — correspond au nombre de dents : 80 dents pour le koicha (thé épais, geste plus lent), 100 dents pour un usage polyvalent au quotidien, 120 dents pour l'usucha (thé léger) et une mousse plus fine. Pour débuter, un chasen 100 dents en bambou blanc suffit largement. Vérifiez que les dents sont souples, régulières, et que le manche n'est pas fendu. Un fouet trop rigide ou trop lâche ne montera pas la mousse."
         ),
       ],
     },

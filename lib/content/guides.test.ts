@@ -74,6 +74,11 @@ const EXPECTED_META: Record<string, Pick<Guide, "title" | "description">> = {
     description:
       "Fouet bambou (chasen), entretien, tailles et alternatives. Guide d'achat des accessoires matcha pour débuter.",
   },
+  "ceremonie-du-the-matcha": {
+    title: "La cérémonie du thé matcha (chanoyu)",
+    description:
+      "Histoire, étapes et philosophie de la cérémonie du thé japonaise. Comment vivre une expérience chanoyu à la maison.",
+  },
 };
 
 describe("guides loader", () => {
