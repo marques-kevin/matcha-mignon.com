@@ -35,6 +35,7 @@ export const guides: Guide[] = [
       "bienfaits-matcha",
       "matcha-bio",
       "comment-choisir-son-matcha",
+      "recettes-matcha-cuisine",
     ],
     relatedProducts: ["matcha-ceremonie", "matcha-culinaire"],
     sections: [
@@ -56,11 +57,11 @@ export const guides: Guide[] = [
           ),
           link("/produits/matcha-culinaire", "matcha culinaire"),
           text(
-            " (culinary grade) est plus robuste, idéal pour les lattes, smoothies et pâtisseries. Découvrez nos "
+            " (culinary grade) est plus robuste, idéal pour les lattes, smoothies et pâtisseries. Pour des idées concrètes en cuisine, consultez nos "
           ),
           link(
             "/guide/recettes-matcha-cuisine",
-            "recettes au matcha pour la cuisine"
+            "recettes au matcha"
           ),
           text("."),
         ],
@@ -305,11 +306,11 @@ export const guides: Guide[] = [
           ),
           link("/produits/matcha-culinaire", "matcha culinaire"),
           text(
-            " est le choix économique (15 à 25 € pour 100 g). N'achetez pas du matcha de cérémonie pour la pâtisserie : vous diluez un produit premium sans en tirer les nuances. Pour des idées concrètes — gâteau, cookies, glace — consultez notre guide "
+            " est le choix économique (15 à 25 € pour 100 g). N'achetez pas du matcha de cérémonie pour la pâtisserie : vous diluez un produit premium sans en tirer les nuances. Pour des recettes pas à pas — gâteau, cookies, glace — consultez notre guide "
           ),
           link(
             "/guide/recettes-matcha-cuisine",
-            "recettes au matcha cuisine et pâtisserie"
+            "recettes au matcha"
           ),
           text(". Apprenez la préparation adaptée dans notre guide "),
           link("/guide/preparer-le-matcha", "comment préparer le matcha"),
@@ -345,6 +346,130 @@ export const guides: Guide[] = [
           link("/produits/matcha-latte", "matcha latte blend"),
           text(
             ". En résumé : cérémonie pour la pureté, culinaire pour l'économie en cuisine, latte pour le café quotidien. Choisissez selon votre rituel, pas selon un classement externe."
+          ),
+        ],
+      },
+    ],
+  },
+  {
+    slug: "recettes-matcha-cuisine",
+    title: "Recettes au matcha : cuisine et pâtisserie",
+    description:
+      "Gâteau, cookies, glace, smoothie : nos recettes faciles au matcha. Quel grade utiliser, dosages et astuces pour un goût équilibré.",
+    readingTime: "8 min",
+    publishedAt: "2026-08-18",
+    updatedAt: "2026-08-18",
+    keywords: [
+      "recette matcha",
+      "gâteau matcha",
+      "pâtisserie matcha",
+      "matcha cuisine",
+      "cookies matcha",
+    ],
+    relatedGuides: [
+      "qu-est-ce-que-le-matcha",
+      "preparer-le-matcha",
+      "comment-choisir-son-matcha",
+      "conservation-matcha",
+    ],
+    relatedProducts: ["matcha-culinaire"],
+    sections: [
+      {
+        heading: "Pourquoi du matcha culinaire en cuisine ?",
+        content: [
+          text(
+            "En pâtisserie et en cuisine salée, le matcha doit tenir face aux autres ingrédients — beurre, sucre, lait, farine — sans disparaître ni devenir trop amer. Le "
+          ),
+          link("/produits/matcha-culinaire", "matcha culinaire"),
+          text(
+            " est conçu pour cela : profil plus robuste, prix plus doux par portion que le matcha de cérémonie. Réserver le "
+          ),
+          link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+          text(
+            " à la dégustation pure : ses notes umami fines se perdent dans un gâteau ou un smoothie. Pour comprendre la différence entre les grades, lisez "
+          ),
+          link("/guide/qu-est-ce-que-le-matcha", "qu'est-ce que le matcha"),
+          text(" et notre guide "),
+          link(
+            "/guide/comment-choisir-son-matcha",
+            "comment choisir son matcha"
+          ),
+          text("."),
+        ],
+      },
+      {
+        heading: "Dosages type : combien de matcha par portion ?",
+        content: [
+          text(
+            "Une cuillère à café rase correspond à environ 2 g de matcha. Pour un smoothie ou un latte glacé : 2 g (1 c. à café) pour 250 ml de liquide. Cookies : 4 à 6 g pour 12 biscuits. Gâteau marbré : 8 à 10 g pour un cake de 6 parts. Glace maison : 5 à 8 g pour 500 ml de base crème. Commencez toujours par la dose minimale : le matcha s'intensifie en cuisson et au froid. Pour la boisson chaude traditionnelle, consultez "
+          ),
+          link("/guide/preparer-le-matcha", "comment préparer le matcha"),
+          text("."),
+        ],
+      },
+      {
+        heading: "Smoothie matcha-banane",
+        content: [
+          text(
+            "Tamisez 2 g de matcha culinaire dans un bol. Ajoutez 1 banane, 200 ml de lait d'amande froid et 1 c. à soupe de yaourt. Mixez 30 secondes jusqu'à une texture lisse. Le froid limite l'amertume ; ajoutez du miel si besoin. Idéal pour tester un nouveau sachet de "
+          ),
+          link("/produits/matcha-culinaire", "matcha culinaire"),
+          text(" sans matériel de cérémonie."),
+        ],
+      },
+      {
+        heading: "Cookies matcha-chocolat",
+        content: [
+          text(
+            "Mélangez 120 g de beurre mou, 80 g de sucre et 5 g de matcha tamisé. Incorporez 1 œuf, puis 180 g de farine et 80 g de pépites de chocolat. Formez des boules, enfournez 12 minutes à 170 °C. Le matcha colore la pâte d'un vert pastel ; ne prolongez pas la cuisson : une cookie trop dorée masque les arômes herbacés."
+          ),
+        ],
+      },
+      {
+        heading: "Gâteau marbré au matcha",
+        content: [
+          text(
+            "Préparez une base vanille classique (2 œufs, 100 g de sucre, 100 g de farine, 80 g de beurre). Divisez la pâte : tamisez 8 g de matcha dans une moitié avec 2 c. à soupe de lait. Versez les deux masses en alternance dans un moule, puis marbrez avec une fourchette. Cuisez 35 minutes à 165 °C. Un "
+          ),
+          link("/produits/matcha-culinaire", "matcha culinaire bio"),
+          text(
+            " offre un contraste visuel net entre le vert matcha et la vanille."
+          ),
+        ],
+      },
+      {
+        heading: "Glace matcha maison",
+        content: [
+          text(
+            "Fouettez 6 g de matcha tamisé dans 50 ml de lait chaud (pas bouillant) jusqu'à dissolution complète. Mélangez avec 250 ml de crème liquide, 80 g de sucre et 1 c. à soupe de miel. Réfrigérez 2 heures, puis turbinez ou placez au congélateur en remuant toutes les 30 minutes. La glace concentre le goût : réduisez le sucre si vous aimez un profil plus vert."
+          ),
+        ],
+      },
+      {
+        heading: "Latte glacé matcha",
+        content: [
+          text(
+            "Tamisez 2 g de matcha dans 30 ml d'eau tiède (75 °C), fouettez jusqu'à mousse. Versez sur 200 ml de lait froid et des glaçons. Variante café : ajoutez un expresso pour un dirty matcha latte. Pour la version chaude et crémeuse, suivez notre guide "
+          ),
+          link("/guide/preparer-le-matcha", "comment préparer le matcha"),
+          text("."),
+        ],
+      },
+      {
+        heading: "Astuces pour un goût équilibré",
+        content: [
+          text(
+            "Tamisez toujours le matcha avant incorporation : zéro grumeau, couleur homogène. Évitez la surchauffe : au-delà de 80 °C, les arômes deviennent amers — préférez l'eau tiède ou le froid en pâtisserie. Pour les préparations réfrigérées (glace, crème), le matcha s'intensifie après 24 h : dosez en conséquence. Conservez les pâtisseries au matcha dans une boîte hermétique 2 à 3 jours ; le vert s'oxydise vite à l'air. Pour le sachet d'origine, appliquez nos conseils de "
+          ),
+          link("/guide/conservation-matcha", "conservation du matcha"),
+          text("."),
+        ],
+      },
+      {
+        heading: "Tableau récapitulatif : grade et usage",
+        content: [
+          text(
+            "Cérémonie (1–2 g) : dégustation pure en bol, sans sucre ni lait — profil umami et doux. Culinaire (2–10 g) : smoothies, cookies, gâteaux, glaces, lattes — goût franc, bon rapport qualité-prix. Latte (2 g) : lattes quotidiens avec lait végétal, mousse optimisée. En cuisine, le culinaire est le choix par défaut ; le cérémonie ne se justifie que pour une finition décorative (saupoudrage léger sur un entremets)."
           ),
         ],
       },
@@ -413,123 +538,6 @@ export const guides: Guide[] = [
           ),
           link("/guide/qu-est-ce-que-le-matcha", "qu'est-ce que le matcha"),
           text("."),
-        ],
-      },
-    ],
-  },
-  {
-    slug: "recettes-matcha-cuisine",
-    title: "Recettes au matcha : cuisine et pâtisserie",
-    description:
-      "Gâteau, cookies, glace, smoothie : nos recettes faciles au matcha. Quel grade utiliser, dosages et astuces pour un goût équilibré.",
-    readingTime: "8 min",
-    publishedAt: "2026-08-18",
-    updatedAt: "2026-08-18",
-    keywords: [
-      "recette matcha",
-      "gâteau matcha",
-      "pâtisserie matcha",
-      "matcha cuisine",
-    ],
-    relatedGuides: [
-      "qu-est-ce-que-le-matcha",
-      "preparer-le-matcha",
-      "comment-choisir-son-matcha",
-      "conservation-matcha",
-    ],
-    relatedProducts: ["matcha-culinaire"],
-    sections: [
-      {
-        heading: "Pourquoi utiliser du matcha culinaire",
-        content: [
-          text(
-            "En cuisine, le grade compte autant qu'en dégustation. Le matcha de cérémonie est doux et délicat : ses nuances umami disparaissent dans un gâteau ou un smoothie. Le "
-          ),
-          link("/produits/matcha-culinaire", "matcha culinaire"),
-          text(
-            " est plus robuste, légèrement amer, et conçu pour résister aux autres ingrédients — sucre, beurre, lait. Il coûte aussi moins cher au gramme, ce qui compte quand une recette demande 10 à 15 g. Pour comprendre la différence entre les grades, lisez "
-          ),
-          link("/guide/qu-est-ce-que-le-matcha", "qu'est-ce que le matcha"),
-          text(" et notre guide "),
-          link(
-            "/guide/comment-choisir-son-matcha",
-            "comment choisir son matcha"
-          ),
-          text("."),
-        ],
-      },
-      {
-        heading: "Smoothie matcha banane",
-        content: [
-          text(
-            "Mixez 1 banane mûre, 200 ml de lait végétal (avoine ou amande), 1 c. à café (2 g) de matcha tamisé et 3 glaçons. Mixez 30 secondes jusqu'à une texture lisse. Le matcha apporte une légère amertume qui équilibre la douceur de la banane. Pour 2 verres, doublez les quantités."
-          ),
-        ],
-      },
-      {
-        heading: "Cookies au matcha",
-        content: [
-          text(
-            "Fouettez 100 g de beurre mou avec 80 g de sucre, ajoutez 1 œuf, puis incorporez 180 g de farine, 1 c. à café (2 g) de matcha tamisé et ½ c. à café de levure. Formez des boules, aplatissez légèrement, enfournez 12 min à 170 °C. Le matcha colore la pâte d'un vert pastel et apporte une note herbacée. Comptez 2 g de matcha pour 12 cookies."
-          ),
-        ],
-      },
-      {
-        heading: "Gâteau marbré matcha-vanille",
-        content: [
-          text(
-            "Préparez une pâte de base : 3 œufs, 150 g de sucre, 120 g de farine, 80 g de beurre fondu. Divisez la pâte en deux : dans l'une, incorporez 2 c. à soupe (6 g) de matcha tamisé ; dans l'autre, 1 c. à café d'extrait de vanille. Versez en alternance dans un moule beurré, marbrez à la spatule, cuisez 35 min à 180 °C. Une portion correspond à environ 1 g de matcha."
-          ),
-        ],
-      },
-      {
-        heading: "Glace au matcha maison",
-        content: [
-          text(
-            "Chauffez 250 ml de crème liquide avec 80 g de sucre jusqu'à frémissement (sans bouillir). Hors du feu, incorporez 2 c. à soupe (6 g) de matcha tamisé en fouettant. Laissez refroidir, versez dans une sorbetière ou un récipient au congélateur en remuant toutes les heures. Le matcha donne une glace vert émeraude au goût frais et légèrement amer. Pour 4 portions."
-          ),
-        ],
-      },
-      {
-        heading: "Latte glacé matcha",
-        content: [
-          text(
-            "Tamisez 2 g de matcha dans un bol, ajoutez 30 ml d'eau tiède (70 °C max) et fouettez jusqu'à dissolution. Versez sur 200 ml de lait froid et des glaçons. Plus simple qu'un "
-          ),
-          link("/guide/preparer-le-matcha", "matcha latte chaud"),
-          text(
-            ", cette version est idéale en été. Ajoutez un filet de sirop d'érable si vous préférez plus de douceur."
-          ),
-        ],
-      },
-      {
-        heading: "Dosages type par portion",
-        content: [
-          text(
-            "En règle générale : 1 à 2 g de matcha par boisson (smoothie, latte), 2 à 3 g pour 4 cookies ou 1 muffin, 5 à 8 g pour un gâteau de 6 parts, 6 à 8 g pour 4 boules de glace. Au-delà de 3 g par verre, l'amertume domine. Commencez bas, goûtez, ajustez — le matcha culinaire supporte mieux des dosages généreux que le grade cérémonie."
-          ),
-        ],
-      },
-      {
-        heading: "Astuces pour un goût équilibré",
-        content: [
-          text(
-            "Tamisez systématiquement la poudre pour éviter les grumeaux — un tamis fin ou une passoire à thé suffit. Évitez la surchauffe : au-delà de 80 °C, le matcha devient amer. Dans les pâtisseries, incorporez le matcha à froid (pâte, crème) ou hors du feu (glace, ganache). Pour les préparations réfrigérées, conservez-les au frigo 2 à 3 jours dans un récipient hermétique ; le matcha s'oxyde vite une fois mélangé. Consultez notre guide "
-          ),
-          link("/guide/conservation-matcha", "conservation du matcha"),
-          text(" pour le stockage de la poudre."),
-        ],
-      },
-      {
-        heading: "Quel grade pour quel usage",
-        content: [
-          text(
-            "Cérémonie : dégustation pure en bol, thé traditionnel — ne pas utiliser en cuisine. Culinaire : gâteaux, cookies, glaces, smoothies, pâtisseries — voir notre "
-          ),
-          link("/produits/matcha-culinaire", "matcha culinaire bio"),
-          text(
-            ". Latte : boissons chaudes ou froides au lait, mousse crémeuse. En résumé : réservez le grade cérémonie à la tasse, et choisissez le culinaire dès que le matcha entre dans une recette."
-          ),
         ],
       },
     ],
