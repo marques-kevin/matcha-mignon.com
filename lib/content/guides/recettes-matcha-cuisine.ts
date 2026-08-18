@@ -22,7 +22,7 @@ export const guide: Guide = {
     "comment-choisir-son-matcha",
     "conservation-matcha",
   ],
-  relatedProducts: ["matcha-culinaire"],
+  relatedProducts: [],
   sections: [
     {
       heading: "Pourquoi du matcha culinaire en cuisine ?",
@@ -30,11 +30,11 @@ export const guide: Guide = {
         text(
           "En pâtisserie et en cuisine salée, le matcha doit tenir face aux autres ingrédients — beurre, sucre, lait, farine — sans disparaître ni devenir trop amer. Le "
         ),
-        link("/produits/matcha-culinaire", "matcha culinaire"),
+        link("/guide/recettes-matcha-cuisine", "matcha culinaire"),
         text(
           " est conçu pour cela : profil plus robuste, prix plus doux par portion que le matcha de cérémonie. Réserver le "
         ),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
           " à la dégustation pure : ses notes umami fines se perdent dans un gâteau ou un smoothie. Pour comprendre la différence entre les grades, lisez "
         ),
@@ -63,7 +63,7 @@ export const guide: Guide = {
         text(
           "Tamisez 2 g de matcha culinaire dans un bol. Ajoutez 1 banane, 200 ml de lait d'amande froid et 1 c. à soupe de yaourt. Mixez 30 secondes jusqu'à une texture lisse. Le froid limite l'amertume ; ajoutez du miel si besoin. Idéal pour tester un nouveau sachet de "
         ),
-        link("/produits/matcha-culinaire", "matcha culinaire"),
+        link("/guide/recettes-matcha-cuisine", "matcha culinaire"),
         text(" sans matériel de cérémonie."),
       ],
     },
@@ -81,7 +81,7 @@ export const guide: Guide = {
         text(
           "Préparez une base vanille classique (2 œufs, 100 g de sucre, 100 g de farine, 80 g de beurre). Divisez la pâte : tamisez 8 g de matcha dans une moitié avec 2 c. à soupe de lait. Versez les deux masses en alternance dans un moule, puis marbrez avec une fourchette. Cuisez 35 minutes à 165 °C. Un "
         ),
-        link("/produits/matcha-culinaire", "matcha culinaire bio"),
+        link("/guide/recettes-matcha-cuisine", "matcha culinaire bio"),
         text(
           " offre un contraste visuel net entre le vert matcha et la vanille."
         ),

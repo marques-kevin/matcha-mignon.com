@@ -22,11 +22,7 @@ export const guide: Guide = {
     "recettes-matcha-cuisine",
     "accessoires-matcha",
   ],
-  relatedProducts: [
-    "matcha-ceremonie",
-    "matcha-culinaire",
-    "matcha-latte",
-  ],
+  relatedProducts: [],
   sections: [
     {
       heading: "Les critères de qualité à vérifier",
@@ -44,11 +40,11 @@ export const guide: Guide = {
         text(
           "Pour la dégustation pure en bol traditionnel, investissez dans un matcha de cérémonie de première récolte — comptez 25 à 40 € pour 30 g. Pour les lattes quotidiens, un "
         ),
-        link("/produits/matcha-latte", "blend matcha latte"),
+        link("/guide/recette-matcha-latte", "blend matcha latte"),
         text(
           " offre un meilleur rapport qualité-prix (environ 20 à 30 € pour 50 g). Pour la cuisine — gâteaux, glaces, smoothies — le "
         ),
-        link("/produits/matcha-culinaire", "matcha culinaire"),
+        link("/guide/recettes-matcha-cuisine", "matcha culinaire"),
         text(
           " est le choix économique (15 à 25 € pour 100 g). N'achetez pas du matcha de cérémonie pour la pâtisserie : vous diluez un produit premium sans en tirer les nuances. Pour des recettes pas à pas — gâteau, cookies, glace — consultez notre guide "
         ),
@@ -81,15 +77,15 @@ export const guide: Guide = {
         text(
           "Cérémonie : première récolte, doux et umami, idéal pour la dégustation pure — voir notre "
         ),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie Uji"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie Uji"),
         text(
           ". Culinaire : plus robuste et amer, parfait pour la cuisine et les smoothies — voir le "
         ),
-        link("/produits/matcha-culinaire", "matcha culinaire bio"),
+        link("/guide/recettes-matcha-cuisine", "matcha culinaire bio"),
         text(
           ". Latte : mélange optimisé pour une mousse crémeuse avec du lait — voir le "
         ),
-        link("/produits/matcha-latte", "matcha latte blend"),
+        link("/guide/recette-matcha-latte", "matcha latte blend"),
         text(
           ". En résumé : cérémonie pour la pureté, culinaire pour l'économie en cuisine, latte pour le café quotidien. Choisissez selon votre rituel, pas selon un classement externe."
         ),

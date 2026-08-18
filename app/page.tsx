@@ -1,5 +1,4 @@
 import { GuideCard } from "@/components/GuideCard";
-import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
 import {
   Button,
@@ -11,7 +10,6 @@ import {
   Title,
 } from "@/components/ui";
 import { guides } from "@/lib/content/guides";
-import { products } from "@/lib/content/products";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
@@ -49,14 +47,11 @@ export default function Home() {
             <Button href="/guide" variant="primary">
               Lire les guides
             </Button>
-            <Button href="/produits" variant="secondary">
-              Voir les produits
-            </Button>
           </div>
         </Container>
       </Section>
 
-      <Section variant="content">
+      <Section variant="contentLast">
         <Container>
           <SectionHeader
             title="Guides"
@@ -67,22 +62,6 @@ export default function Home() {
           <Grid className="mt-8">
             {guides.map((guide) => (
               <GuideCard key={guide.slug} guide={guide} />
-            ))}
-          </Grid>
-        </Container>
-      </Section>
-
-      <Section variant="contentLast">
-        <Container>
-          <SectionHeader
-            title="Nos produits"
-            description="Matcha sélectionné directement au Japon."
-            href="/produits"
-            linkLabel="Tous les produits →"
-          />
-          <Grid className="mt-8">
-            {products.map((product) => (
-              <ProductCard key={product.slug} product={product} />
             ))}
           </Grid>
         </Container>

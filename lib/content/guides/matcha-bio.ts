@@ -11,7 +11,7 @@ export const guide: Guide = {
   updatedAt: "2026-08-16",
   keywords: ["matcha bio", "thé vert bio", "matcha biologique"],
   relatedGuides: ["qu-est-ce-que-le-matcha", "preparer-le-matcha"],
-  relatedProducts: ["matcha-ceremonie"],
+  relatedProducts: [],
   sections: [
     {
       heading: "Qu'est-ce que le matcha bio ?",
@@ -39,7 +39,7 @@ export const guide: Guide = {
         text(
           "Vérifiez la présence du logo AB ou d'une certification reconnue (JAS au Japon, USDA aux États-Unis). Fiez-vous aussi aux critères visuels : vert émeraude intense, poudre fine, odeur herbacée fraîche. Pour la dégustation, un "
         ),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
           " bio de première récolte offre le meilleur équilibre. Apprenez à le préparer correctement avec notre guide "
         ),

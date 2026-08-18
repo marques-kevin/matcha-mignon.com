@@ -3,10 +3,9 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { ContentBlocks } from "@/components/ContentBlocks";
 import { JsonLd } from "@/components/JsonLd";
 import { RelatedLinks } from "@/components/RelatedLinks";
-import { Grid, Page, PageHeader, Prose } from "@/components/ui";
+import { Page, PageHeader, Prose } from "@/components/ui";
 import { findFirstImage } from "@/lib/content/blocks";
 import { getAllGuideSlugs, getGuide, guides } from "@/lib/content/guides";
-import { getProduct } from "@/lib/content/products";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
@@ -53,13 +52,6 @@ export default async function GuidePage({ params }: Props) {
     .map((s) => {
       const g = guides.find((x) => x.slug === s);
       return g ? { href: `/guide/${g.slug}`, label: g.title } : null;
-    })
-    .filter(Boolean) as { href: string; label: string }[];
-
-  const relatedProductLinks = guide.relatedProducts
-    .map((s) => {
-      const p = getProduct(s);
-      return p ? { href: `/produits/${p.slug}`, label: p.title } : null;
     })
     .filter(Boolean) as { href: string; label: string }[];
 
@@ -140,13 +132,9 @@ export default async function GuidePage({ params }: Props) {
         </Prose>
       </article>
 
-      <Grid cols={2} className="mt-12">
+      <div className="mt-12">
         <RelatedLinks title="Guides liés" links={relatedGuideLinks} />
-        <RelatedLinks
-          title="Produits recommandés"
-          links={relatedProductLinks}
-        />
-      </Grid>
+      </div>
     </Page>
   );
 }

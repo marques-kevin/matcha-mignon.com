@@ -53,7 +53,10 @@ export default function AboutPage() {
           toutes les pages, commencez par nos{" "}
           <TextLink href="/guide">guides</TextLink> pour comprendre le matcha,
           puis découvrez notre{" "}
-          <TextLink href="/produits">sélection de produits</TextLink>.
+          <TextLink href="/guide/comment-choisir-son-matcha">
+            sélection de produits
+          </TextLink>
+          .
         </p>
       </Prose>
     </Page>

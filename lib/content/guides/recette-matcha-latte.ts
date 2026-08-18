@@ -20,7 +20,7 @@ export const guide: Guide = {
     "comment-choisir-son-matcha",
     "bienfaits-matcha",
   ],
-  relatedProducts: ["matcha-latte"],
+  relatedProducts: [],
   sections: [
     {
       heading: "Ingrédients et dosages",
@@ -28,7 +28,7 @@ export const guide: Guide = {
         text(
           "Pour un matcha latte classique, prévoyez 2 g de matcha (environ 1 cuillère à café rase), 30 ml d'eau chaude (75–80 °C), 200 ml de lait végétal ou entier et un sucrant optionnel (miel, sirop d'érable ou sucre de coco). Un "
         ),
-        link("/produits/matcha-latte", "blend matcha latte"),
+        link("/guide/recette-matcha-latte", "blend matcha latte"),
         text(
           " est formulé pour ce ratio : mousse épaisse et équilibre sucré-umami sans ajout de sucre. Tamisez toujours le matcha avant utilisation pour éviter les grumeaux."
         ),

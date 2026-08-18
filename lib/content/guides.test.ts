@@ -9,7 +9,6 @@ import {
   guides,
   type Guide,
 } from "@/lib/content/guides";
-import { getAllProductSlugs } from "@/lib/content/products";
 
 const GUIDES_DIR = join(import.meta.dirname, "guides");
 
@@ -149,9 +148,8 @@ describe("public guides API", () => {
     expect(getGuide("slug-inconnu")).toBeUndefined();
   });
 
-  it("points relatedGuides and relatedProducts at existing slugs", () => {
+  it("points relatedGuides at existing slugs and keeps relatedProducts empty", () => {
     const guideSlugs = new Set(getAllGuideSlugs());
-    const productSlugs = new Set(getAllProductSlugs());
 
     for (const guide of guides) {
       for (const related of guide.relatedGuides) {
@@ -160,11 +158,7 @@ describe("public guides API", () => {
         );
       }
 
-      for (const related of guide.relatedProducts) {
-        expect(productSlugs.has(related), `${guide.slug} → ${related}`).toBe(
-          true
-        );
-      }
+      expect(guide.relatedProducts, guide.slug).toEqual([]);
     }
   });
 

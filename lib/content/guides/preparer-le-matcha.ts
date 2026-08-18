@@ -17,13 +17,13 @@ export const guide: Guide = {
     "bienfaits-matcha",
     "accessoires-matcha",
   ],
-  relatedProducts: ["matcha-ceremonie", "matcha-latte"],
+  relatedProducts: [],
   sections: [
     {
       heading: "La méthode traditionnelle",
       content: [
         text("Tamisez 1 à 2 g de "),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
           " dans un bol (chawan). Ajoutez 70 ml d'eau à 75–80 °C — jamais bouillante. Fouettez en M avec un "
         ),
@@ -47,7 +47,7 @@ export const guide: Guide = {
         text(
           "Préparez d'abord le matcha concentré (2 g + 30 ml d'eau chaude) avec un "
         ),
-        link("/produits/matcha-latte", "blend matcha latte"),
+        link("/guide/recette-matcha-latte", "blend matcha latte"),
         text(
           ". Versez sur 200 ml de lait végétal chauffé (avoine ou amande). Ajoutez un filet de miel si souhaité. Pour une recette détaillée avec dosages, variantes chaudes et iced, consultez notre "
         ),

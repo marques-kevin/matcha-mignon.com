@@ -4,7 +4,6 @@ import { ObfuscatableLink } from "@/components/ObfuscatableLink";
 
 export const siteNavLinks = [
   { path: "/guide", label: "Guides" },
-  { path: "/produits", label: "Produits" },
   { path: "/a-propos", label: "À propos" },
 ] as const;
 

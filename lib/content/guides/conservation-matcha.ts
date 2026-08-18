@@ -16,7 +16,7 @@ export const guide: Guide = {
     "stockage matcha",
   ],
   relatedGuides: ["preparer-le-matcha", "qu-est-ce-que-le-matcha"],
-  relatedProducts: ["matcha-ceremonie"],
+  relatedProducts: [],
   sections: [
     {
       heading: "Durée de vie après ouverture",
@@ -42,7 +42,7 @@ export const guide: Guide = {
         text(
           "Optez pour un récipient opaque et hermétique — boîte métallique ou pot en verre foncé avec joint. Transférez le matcha du sachet d'origine dès l'ouverture pour limiter l'air résiduel. Évitez les contenants en plastique transparent ou les boîtes trop grandes : moins d'air dans le récipient, moins d'oxydation. Un "
         ),
-        link("/produits/matcha-ceremonie", "matcha de cérémonie"),
+        link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
           " de première récolte, plus fin et fragile, exige une conservation stricte pour garder son vert émeraude."
         ),
