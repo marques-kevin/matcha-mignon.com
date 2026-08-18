@@ -8,7 +8,7 @@ export const guide: Guide = {
     "Méthode traditionnelle au chasen, matcha latte et erreurs courantes. Le guide complet pour une tasse parfaite.",
   readingTime: "5 min",
   publishedAt: "2026-01-20",
-  updatedAt: "2026-08-18",
+  updatedAt: "2026-08-19",
   keywords: ["préparer matcha", "chasen", "matcha latte", "recette matcha"],
   relatedGuides: [
     "qu-est-ce-que-le-matcha",
@@ -22,6 +22,14 @@ export const guide: Guide = {
     {
       heading: "La méthode traditionnelle",
       content: [
+        // CC0 Wikimedia: public/guides/preparer-le-matcha/matcha-bol-chasen.attribution.txt
+        image(
+          "/guides/preparer-le-matcha/matcha-bol-chasen.jpg",
+          "Bol de poudre de matcha vert et fouet en bambou (chasen) pour la préparation traditionnelle",
+          1280,
+          853,
+          "Matcha dans un bol, prêt à être fouetté au chasen."
+        ),
         text("Tamisez 1 à 2 g de "),
         link("/guide/comment-choisir-son-matcha", "matcha de cérémonie"),
         text(
@@ -30,14 +38,6 @@ export const guide: Guide = {
         link("/guide/accessoires-matcha", "fouet matcha"),
         text(
           " (chasen) pendant 20 secondes jusqu'à obtenir une mousse fine."
-        ),
-        // CC0 Wikimedia: public/guides/preparer-le-matcha/matcha-bol-chasen.attribution.txt
-        image(
-          "/guides/preparer-le-matcha/matcha-bol-chasen.jpg",
-          "Bol de poudre de matcha vert et fouet en bambou (chasen) pour la préparation traditionnelle",
-          1280,
-          853,
-          "Matcha dans un bol, prêt à être fouetté au chasen."
         ),
       ],
     },

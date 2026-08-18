@@ -180,6 +180,16 @@ describe("public guides API", () => {
     }
   });
 
+  it("puts a cover image as the first block of the first section on every guide", () => {
+    for (const guide of guides) {
+      const first = guide.sections[0]?.content[0];
+      expect(isImageBlock(first), `${guide.slug} first block`).toBe(true);
+      expect(findFirstImage(guide.sections)?.src).toBe(
+        isImageBlock(first) ? first.src : undefined
+      );
+    }
+  });
+
   it("uses the first content image of preparer-le-matcha as cover", () => {
     const guide = getGuide("preparer-le-matcha");
     const cover = findFirstImage(guide?.sections ?? []);

@@ -1,4 +1,4 @@
-import { link, text } from "../blocks";
+import { image, link, text } from "../blocks";
 import type { Guide } from "./types";
 
 export const guide: Guide = {
@@ -8,7 +8,7 @@ export const guide: Guide = {
     "Antioxydants, L-théanine, énergie durable : ce que dit la science sur le matcha et comment en profiter au quotidien.",
   readingTime: "7 min",
   publishedAt: "2026-02-01",
-  updatedAt: "2026-08-18",
+  updatedAt: "2026-08-19",
   keywords: [
     "matcha bienfaits",
     "bienfaits matcha",
@@ -27,6 +27,14 @@ export const guide: Guide = {
     {
       heading: "Riche en antioxydants",
       content: [
+        // CC BY-SA 4.0 Wikimedia: public/guides/bienfaits-matcha/tasse-matcha.attribution.txt
+        image(
+          "/guides/bienfaits-matcha/tasse-matcha.jpg",
+          "Tasse de matcha fraîchement fouetté, servie avec une sucrerie japonaise",
+          1280,
+          719,
+          "Une tasse de matcha : antioxydants et énergie calme dans le bol."
+        ),
         text(
           "Le matcha contient des catéchines, notamment l'EGCG, aux propriétés antioxydantes reconnues. En consommant la feuille entière, l'apport est supérieur à celui d'un thé vert infusé."
         ),
