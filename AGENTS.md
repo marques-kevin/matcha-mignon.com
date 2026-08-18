@@ -21,10 +21,11 @@ Site éditorial en français (guides + produits) conçu pour le SEO. Objectif lo
 ## Commandes
 
 ```bash
-npm run dev      # Développement local (port 3000)
-npm run build    # Build statique → out/
-npm run start    # Prévisualise out/ avec serve
-npm run lint     # ESLint
+npm run dev              # Développement local (port 3000)
+npm run build            # Build statique → out/
+npm run start            # Prévisualise out/ avec serve
+npm run lint             # ESLint
+npm run generate:guides  # Régénère lib/content/guides/index.ts (pré-hook de dev/build)
 ```
 
 ## Structure du projet
@@ -42,7 +43,9 @@ lib/
   seo.ts                # Helper buildMetadata()
   utils.ts              # Utilitaires (cn)
   content/
-    guides.ts           # Données guides
+    guides/             # Un fichier TS par guide (`<slug>.ts`)
+      types.ts          # Type `Guide`
+      index.ts          # Généré — ne pas éditer
     products.ts         # Données produits
 public/                 # Assets statiques
 out/                    # Build généré (ne pas éditer)
@@ -70,18 +73,20 @@ out/                    # Build généré (ne pas éditer)
 
 ### Contenu
 
-- Guides et produits dans `lib/content/` (fichiers TypeScript, pas de CMS)
+- Guides : un fichier par article dans `lib/content/guides/<slug>.ts` (`export const guide`)
+- Produits : `lib/content/products.ts`
 - Chaque entrée a : `slug`, `title`, `description`, `keywords`, liens relatifs
-- Slugs en kebab-case français (`preparer-le-matcha`)
+- Slugs en kebab-case français (`preparer-le-matcha`) — pour un guide, le nom de fichier **est** le slug
 
 ## Ajouter une page
 
 ### Nouveau guide
 
-1. Ajouter l'entrée dans `lib/content/guides.ts`
-2. Renseigner `relatedGuides` et `relatedProducts` pour le maillage interne
-3. La route `/guide/[slug]` est générée automatiquement via `generateStaticParams`
-4. Mettre à jour les liens du footer (`components/Footer.tsx`) si page importante
+1. Créer `lib/content/guides/<slug>.ts` avec `export const guide: Guide` (le slug doit matcher le nom de fichier)
+2. Ne **pas** éditer d'index / barrel : le dossier est la source de vérité (`npm run generate:guides` tourne tout seul avant `dev` / `build` / `typecheck`)
+3. Renseigner `relatedGuides` et `relatedProducts` pour le maillage interne
+4. La route `/guide/[slug]` est générée automatiquement via `generateStaticParams`
+5. Mettre à jour les liens du footer (`components/Footer.tsx`) si page importante
 
 ### Nouveau produit
 
@@ -252,7 +257,7 @@ Rôle : **implémenter le contenu éditorial** décrit dans une issue GitHub (`a
 
 ### Peut faire
 
-- Modifier `lib/content/guides.ts`, `lib/content/products.ts` et `lib/content/blocks.ts` si besoin
+- Modifier `lib/content/guides/<slug>.ts`, `lib/content/products.ts` et `lib/content/blocks.ts` si besoin
 - Optimiser meta et contenu des pages existantes (`type:meta`)
 - Ajouter le maillage interne : `relatedGuides` / `relatedProducts` dans le contenu, liens depuis d'autres guides ou pages listing
 - Mettre à jour `components/FooterLinks.tsx` si la page est importante (cf. spec issue)
@@ -287,7 +292,7 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 
 ### Checklist contenu (nouveau guide)
 
-- [ ] Entrée dans `lib/content/guides.ts` (ou `products.ts`)
+- [ ] Fichier `lib/content/guides/<slug>.ts` avec `export const guide` (ou entrée dans `products.ts`)
 - [ ] `title` ≤ 60 car., `description` ≤ 160 car.
 - [ ] `keywords`, `relatedGuides`, `relatedProducts`, `updatedAt` (date du jour)
 - [ ] Maillage interne depuis/vers les pages indiquées dans la spec
@@ -309,7 +314,7 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 
 ### Ne doit pas faire
 
-- Réécrire le contenu éditorial dans `lib/content/guides.ts` ou `products.ts` (sauf lien technique minimal si la spec le demande)
+- Réécrire le contenu éditorial dans `lib/content/guides/` ou `products.ts` (sauf lien technique minimal si la spec le demande)
 - Créer des guides ou produits — rôle du **Content Writer**
 - Traiter plus d'**une issue** par run
 - Ajouter API routes, Server Actions, ou tout ce qui viole l'export statique (voir « Interdictions »)
@@ -344,7 +349,7 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 | ------------------------- | ----------------------------------------------------- |
 | `lib/site.ts`             | URL du site, nom, locale — modifier avant déploiement |
 | `lib/seo.ts`              | Metadata et Open Graph                                |
-| `lib/content/guides.ts`   | Tous les guides                                       |
+| `lib/content/guides/`     | Un fichier TS par guide (`<slug>.ts`)                 |
 | `lib/content/products.ts` | Tous les produits                                     |
 | `app/globals.css`         | Thème Tailwind                                        |
 | `next.config.ts`          | Config export statique                                |
