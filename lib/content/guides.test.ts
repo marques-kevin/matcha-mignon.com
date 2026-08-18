@@ -41,7 +41,7 @@ const EXPECTED_META: Record<string, Pick<Guide, "title" | "description">> = {
       "Recette simple de matcha latte : dosages, lait végétal, mousse parfaite. Version chaude et iced, avec ou sans sucre.",
   },
   "bienfaits-matcha": {
-    title: "Les bienfaits du matcha",
+    title: "Matcha bienfaits : antioxydants, énergie, L-théanine",
     description:
       "Antioxydants, L-théanine, énergie durable : ce que dit la science sur le matcha et comment en profiter au quotidien.",
   },

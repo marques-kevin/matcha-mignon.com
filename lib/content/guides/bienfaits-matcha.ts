@@ -3,13 +3,14 @@ import type { Guide } from "./types";
 
 export const guide: Guide = {
   slug: "bienfaits-matcha",
-  title: "Les bienfaits du matcha",
+  title: "Matcha bienfaits : antioxydants, énergie, L-théanine",
   description:
     "Antioxydants, L-théanine, énergie durable : ce que dit la science sur le matcha et comment en profiter au quotidien.",
   readingTime: "7 min",
   publishedAt: "2026-02-01",
   updatedAt: "2026-08-18",
   keywords: [
+    "matcha bienfaits",
     "bienfaits matcha",
     "antioxydants",
     "L-théanine",
