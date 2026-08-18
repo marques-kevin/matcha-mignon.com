@@ -5,6 +5,8 @@ export type Product = {
   grade: "cérémonie" | "culinaire" | "latte";
   origin: string;
   price: string;
+  image: string;
+  imageAlt: string;
   keywords: string[];
   relatedGuides: string[];
   relatedProducts: string[];
@@ -20,6 +22,8 @@ export const products: Product[] = [
     grade: "cérémonie",
     origin: "Uji, Kyoto, Japon",
     price: "32 €",
+    image: "/products/matcha-ceremonie.webp",
+    imageAlt: "Boîte de matcha cérémonie Uji, poudre jade et chashaku",
     keywords: ["matcha cérémonie", "matcha uji", "matcha premium"],
     relatedGuides: [
       "qu-est-ce-que-le-matcha",
@@ -42,6 +46,8 @@ export const products: Product[] = [
     grade: "culinaire",
     origin: "Kagoshima, Japon",
     price: "18 €",
+    image: "/products/matcha-culinaire.webp",
+    imageAlt: "Pochon de matcha culinaire bio et poudre dans un bol",
     keywords: ["matcha culinaire", "matcha bio", "matcha cuisine"],
     relatedGuides: [
       "qu-est-ce-que-le-matcha",
@@ -65,6 +71,8 @@ export const products: Product[] = [
     grade: "latte",
     origin: "Nishio, Aichi, Japon",
     price: "24 €",
+    image: "/products/matcha-latte.webp",
+    imageAlt: "Boîte de matcha latte blend et tasse de latte mousseux",
     keywords: ["matcha latte", "matcha café", "poudre matcha latte"],
     relatedGuides: [
       "preparer-le-matcha",
