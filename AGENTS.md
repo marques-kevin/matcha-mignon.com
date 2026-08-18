@@ -77,6 +77,7 @@ out/                    # Build généré (ne pas éditer)
 - Produits : `lib/content/products.ts`
 - Chaque entrée a : `slug`, `title`, `description`, `keywords`, liens relatifs
 - Slugs en kebab-case français (`preparer-le-matcha`) — pour un guide, le nom de fichier **est** le slug
+- Images de guide : bloc `image()` (voir « Images dans un guide ») — pas d’images générées par IA pour les produits
 
 ## Ajouter une page
 
@@ -87,6 +88,20 @@ out/                    # Build généré (ne pas éditer)
 3. Renseigner `relatedGuides` et `relatedProducts` pour le maillage interne
 4. La route `/guide/[slug]` est générée automatiquement via `generateStaticParams`
 5. Mettre à jour les liens du footer (`components/Footer.tsx`) si page importante
+6. Illustrer si pertinent : voir « Images dans un guide »
+
+### Images dans un guide
+
+1. Fichier dans `public/guides/<slug>/<nom-descriptif-kebab-case>.jpg` (ex. `matcha-latte-maison.jpg`, pas `IMG_001.jpg`)
+2. Helper `image(src, alt, width, height, caption?)` dans `lib/content/blocks.ts`
+   - `src` : chemin relatif sous `public/` (ex. `/guides/preparer-le-matcha/matcha-bol-chasen.jpg`)
+   - `alt` **obligatoire, non vide** — signal SEO Images
+   - `width` / `height` obligatoires (évite le CLS)
+   - `caption` optionnelle (rendue en `<figcaption>`)
+3. La première image du guide alimente `og:image` et `Article.image`
+4. **Sources autorisées** : Unsplash, Pexels, Wikimedia Commons (photos réelles)
+5. Conserver la licence à côté du fichier (`*.attribution.txt`) **ou** en commentaire dans le TS (auteur, licence, URL)
+6. **Interdit** : images générées par IA, surtout pour les produits
 
 ### Nouveau produit
 
@@ -294,6 +309,7 @@ L'issue se ferme au merge via `Fixes #N`. Ne pas commenter l'issue ni modifier s
 - [ ] `title` ≤ 60 car., `description` ≤ 160 car.
 - [ ] `keywords`, `relatedGuides`, `relatedProducts`, `updatedAt` (date du jour)
 - [ ] Maillage interne depuis/vers les pages indiquées dans la spec
+- [ ] Si image : `image()` avec `alt` non vide, fichier dans `public/guides/<slug>/`, licence enregistrée (Unsplash / Pexels / Wikimedia — pas d’IA)
 - [ ] `npm run audit:check` vert
 
 ## Agent : SEO Tech Fixer
