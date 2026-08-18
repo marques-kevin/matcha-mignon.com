@@ -10,6 +10,7 @@ type ObfuscatableLinkProps = {
   className?: string;
   variant?: LinkVariant;
   obfuscated?: boolean;
+  onClick?: () => void;
 };
 
 export function ObfuscatableLink({
@@ -18,17 +19,23 @@ export function ObfuscatableLink({
   className,
   variant,
   obfuscated = true,
+  onClick,
 }: ObfuscatableLinkProps) {
   if (!obfuscated) {
     return (
-      <TextLink href={path} className={className} variant={variant}>
+      <TextLink
+        href={path}
+        className={className}
+        variant={variant}
+        onClick={onClick}
+      >
         {children}
       </TextLink>
     );
   }
 
   return (
-    <JsLink path={path} className={className}>
+    <JsLink path={path} className={className} onClick={onClick}>
       {children}
     </JsLink>
   );

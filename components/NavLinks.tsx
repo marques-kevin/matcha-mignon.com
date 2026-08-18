@@ -2,7 +2,7 @@
 
 import { ObfuscatableLink } from "@/components/ObfuscatableLink";
 
-const navLinks = [
+export const siteNavLinks = [
   { path: "/guide", label: "Guides" },
   { path: "/produits", label: "Produits" },
   { path: "/a-propos", label: "À propos" },
@@ -14,9 +14,9 @@ type NavLinksProps = {
 
 export function NavLinks({ obfuscated = true }: NavLinksProps) {
   return (
-    <nav aria-label="Navigation principale">
+    <nav aria-label="Navigation principale" className="hidden md:block">
       <ul className="flex items-center gap-6">
-        {navLinks.map((link) => (
+        {siteNavLinks.map((link) => (
           <li key={link.path}>
             <ObfuscatableLink
               path={link.path}
