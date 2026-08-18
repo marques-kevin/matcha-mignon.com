@@ -1,46 +1,46 @@
 export const titleVariants = {
-  h1: "text-3xl font-bold tracking-tight text-matcha-900",
-  h2: "text-2xl font-bold text-matcha-900",
-  h3: "text-xl font-semibold text-matcha-900",
-  h4: "text-lg font-semibold text-matcha-900",
-  h5: "text-base font-semibold text-matcha-900",
-  h6: "text-sm font-semibold uppercase tracking-wider text-matcha-600",
-  hero: "text-4xl font-bold tracking-tight text-matcha-900 sm:text-5xl",
-  card: "text-lg font-semibold text-matcha-900 group-hover:text-matcha-700",
+  h1: "text-3xl font-bold tracking-tight text-fg",
+  h2: "text-2xl font-bold text-fg",
+  h3: "text-xl font-semibold text-fg",
+  h4: "text-lg font-semibold text-fg",
+  h5: "text-base font-semibold text-fg",
+  h6: "text-sm font-semibold uppercase tracking-wider text-fg-subtle",
+  hero: "text-4xl font-bold tracking-tight text-fg sm:text-5xl",
+  card: "text-lg font-semibold text-fg group-hover:text-brand",
 } as const;
 
 export const textVariants = {
-  body: "text-base leading-relaxed text-matcha-800",
-  lead: "text-lg leading-relaxed text-matcha-700",
-  small: "text-sm leading-relaxed text-matcha-700/80",
-  muted: "text-sm text-matcha-600",
-  caption: "text-xs text-matcha-600",
-  label: "text-sm font-medium text-matcha-800",
-  price: "text-2xl font-bold text-matcha-800",
-  eyebrow: "text-sm font-medium uppercase tracking-widest text-matcha-600",
+  body: "text-base leading-relaxed text-fg-muted",
+  lead: "text-lg leading-relaxed text-brand",
+  small: "text-sm leading-relaxed text-brand/80",
+  muted: "text-sm text-fg-subtle",
+  caption: "text-xs text-fg-subtle",
+  label: "text-sm font-medium text-fg-muted",
+  price: "text-2xl font-bold text-fg-muted",
+  eyebrow: "text-sm font-medium uppercase tracking-widest text-fg-subtle",
 } as const;
 
 export const buttonVariants = {
   primary:
-    "inline-flex items-center justify-center rounded-full bg-matcha-700 px-6 py-3 text-sm font-medium text-white transition hover:bg-matcha-600",
+    "inline-flex items-center justify-center rounded-pill bg-brand px-6 py-3 text-sm font-medium text-on-brand motion-safe-transition hover:bg-brand-hover",
   secondary:
-    "inline-flex items-center justify-center rounded-full border border-matcha-300 px-6 py-3 text-sm font-medium text-matcha-800 transition hover:bg-matcha-100",
+    "inline-flex items-center justify-center rounded-pill border border-border-brand px-6 py-3 text-sm font-medium text-fg-muted motion-safe-transition hover:bg-brand-subtle",
   ghost:
-    "inline-flex items-center justify-center text-sm font-medium text-matcha-700 transition hover:text-matcha-500",
+    "inline-flex items-center justify-center text-sm font-medium text-brand motion-safe-transition hover:text-brand-soft",
 } as const;
 
 export const linkVariants = {
   default:
-    "font-medium text-matcha-800 transition hover:text-matcha-600 hover:underline",
-  muted: "text-sm text-matcha-600 transition hover:text-matcha-800",
-  nav: "text-sm font-medium text-matcha-800 transition hover:text-matcha-600",
+    "font-medium text-fg-muted motion-safe-transition hover:text-brand-hover hover:underline",
+  muted: "text-sm text-fg-subtle motion-safe-transition hover:text-fg-muted",
+  nav: "text-sm font-medium text-fg-muted motion-safe-transition hover:text-brand-hover",
   footer:
-    "text-sm text-matcha-100 underline underline-offset-2 transition hover:text-white",
-  breadcrumb: "text-sm text-matcha-600 transition hover:text-matcha-800",
+    "text-sm text-on-brand-muted underline underline-offset-2 motion-safe-transition hover:text-on-brand",
+  breadcrumb: "text-sm text-fg-subtle motion-safe-transition hover:text-fg-muted",
   related:
-    "text-sm font-medium text-matcha-800 transition hover:text-matcha-600 hover:underline",
+    "text-sm font-medium text-fg-muted motion-safe-transition hover:text-brand-hover hover:underline",
   action:
-    "text-sm font-medium text-matcha-700 transition hover:text-matcha-500",
+    "text-sm font-medium text-brand motion-safe-transition hover:text-brand-soft",
 } as const;
 
 export const containerSizes = {
@@ -50,21 +50,21 @@ export const containerSizes = {
 
 export const sectionVariants = {
   default: "",
-  hero: "bg-gradient-to-b from-matcha-100/50 to-cream px-6 py-20",
+  hero: "bg-gradient-to-b from-brand-subtle/50 to-canvas px-6 py-20",
   content: "px-6 py-16",
   contentLast: "px-6 pb-20",
 } as const;
 
 export const cardVariants = {
   default:
-    "rounded-2xl border border-matcha-200 bg-white p-6 transition hover:border-matcha-400 hover:shadow-md",
-  muted: "rounded-2xl border border-matcha-200 bg-matcha-50 p-6",
-  list: "rounded-xl border border-matcha-200 bg-white px-4 py-3",
+    "rounded-card border border-border bg-surface p-6 motion-safe-transition hover:border-border-strong hover:shadow-md",
+  muted: "rounded-card border border-border bg-subtle p-6",
+  list: "rounded-card-sm border border-border bg-surface px-4 py-3",
 } as const;
 
 export const badgeVariants = {
   default:
-    "inline-block rounded-full bg-matcha-100 px-3 py-0.5 text-xs font-medium text-matcha-700",
+    "inline-block rounded-pill bg-brand-subtle px-3 py-0.5 text-xs font-medium text-brand",
 } as const;
 
 export const gridCols = {

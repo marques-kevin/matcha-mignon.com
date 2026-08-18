@@ -14,14 +14,49 @@
   --color-matcha-800: #364927;
   --color-matcha-900: #2e3d22;
   --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-card: 1rem;
+  --radius-card-sm: 0.75rem;
+  --radius-pill: 9999px;
+}
+
+/* Role aliases of the matcha ramp — inline so opacity modifiers (e.g. /50) resolve. */
+@theme inline {
+  --color-canvas: var(--color-cream);
+  --color-surface: #ffffff;
+  --color-subtle: var(--color-matcha-50);
+  --color-fg: var(--color-matcha-900);
+  --color-fg-muted: var(--color-matcha-800);
+  --color-fg-subtle: var(--color-matcha-600);
+  --color-brand: var(--color-matcha-700);
+  --color-brand-hover: var(--color-matcha-600);
+  --color-brand-soft: var(--color-matcha-500);
+  --color-brand-subtle: var(--color-matcha-100);
+  --color-on-brand: #ffffff;
+  --color-on-brand-muted: var(--color-matcha-100);
+  --color-border: var(--color-matcha-200);
+  --color-border-brand: var(--color-matcha-300);
+  --color-border-strong: var(--color-matcha-400);
+  --color-focus: var(--color-matcha-500);
 }
 
 @layer base {
   body {
-    @apply bg-cream font-sans text-matcha-900 antialiased;
+    @apply bg-canvas font-sans text-fg antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-focus ring-offset-2 ring-offset-canvas;
+  }
+}
+
+@utility motion-safe-transition {
+  @apply transition;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }
 
 @utility prose-matcha {
-  @apply prose max-w-none prose-headings:font-semibold prose-headings:text-matcha-900 prose-p:leading-relaxed prose-p:text-matcha-800 prose-a:font-medium prose-a:text-matcha-700 prose-a:no-underline hover:prose-a:underline;
+  @apply prose max-w-none prose-headings:font-semibold prose-headings:text-fg prose-p:leading-relaxed prose-p:text-fg-muted prose-a:font-medium prose-a:text-brand prose-a:no-underline hover:prose-a:underline;
 }
