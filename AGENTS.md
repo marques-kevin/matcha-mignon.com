@@ -163,7 +163,6 @@ Rôle : **chef de projet SEO**. Tu analyses, priorises et crées des **GitHub Is
 - Modifier `lib/content/*`, `app/*`, `components/*` (sauf demande explicite)
 - Ouvrir de PR de contenu — c'est le rôle du **SEO Content Writer**
 - Merger des PR
-- Plus de **3 issues** `status:ready` ouvertes en parallèle (file d'exécution agents)
 
 ### Politique `status:ready` (défaut)
 
@@ -178,7 +177,6 @@ Rôle : **chef de projet SEO**. Tu analyses, priorises et crées des **GitHub Is
 | Risque de régression élevé    | Migration routing, sitemap, changement de structure URL                                  |
 | Spec incomplète               | Donnée GSC manquante, décision éditoriale ou produit non tranchée                        |
 | Dépendance externe            | Credentials, choix humain, validation business                                           |
-| File saturée                  | 3 issues `status:ready` déjà ouvertes → nouvelle issue en `status:backlog` jusqu'à merge |
 
 Pour une issue en backlog à fort impact, documenter dans le body **pourquoi** elle n'est pas `ready` et **quand** la promouvoir.
 
@@ -194,7 +192,7 @@ Issues **Research** (`agent:manager`) : toujours `status:backlog` — jamais `st
 6. Créer ou mettre à jour des issues via les templates (`.github/ISSUE_TEMPLATE/`)
 7. Labelliser chaque issue exécutable :
    - **Défaut** : `status:ready` + `agent:writer` ou `agent:tech` + `priority:*`
-   - **Si impact trop grand** ou file ≥ 3 ready : `status:backlog` (voir politique ci-dessus)
+   - **Si impact trop grand** : `status:backlog` (voir politique ci-dessus)
 8. Commenter un résumé sur l'issue la plus récente de type recherche, ou créer une issue `[Research] Bilan SEO semaine YYYY-Www`
 
 ### Format issue (Content Writer)
@@ -214,7 +212,7 @@ Utiliser le template **Nouveau guide** ou **Améliorer une page**. Chaque issue 
 | `agent:tech` + `type:technical`   | Fix audit (orphelin, lien cassé…)                       |
 | `agent:manager` + `type:research` | Analyse avant décision                                  |
 | `status:ready`                    | **Défaut** pour issues Writer/Tech exécutable (webhook) |
-| `status:backlog`                  | Impact trop grand, spec incomplète, ou file ≥ 3 ready   |
+| `status:backlog`                  | Spec incomplète, impact trop grand, décision humaine, ou issues Research |
 | `status:blocked`                  | Donnée ou décision humaine manquante                    |
 
 ### Commandes utiles
