@@ -206,3 +206,5 @@ jobs:
           path: .lighthouseci/
           retention-days: 7
           if-no-files-found: error
+          # `.lighthouseci` is a hidden directory; v4 skips those by default
+          include-hidden-files: true
