@@ -1,6 +1,7 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import storybook from "eslint-plugin-storybook";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,9 +12,16 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: [".next/**", "out/**", "node_modules/**", "next-env.d.ts"],
+    ignores: [
+      ".next/**",
+      "out/**",
+      "node_modules/**",
+      "next-env.d.ts",
+      "storybook-static/**",
+    ],
   },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...storybook.configs["flat/recommended"],
 ];
 
 export default eslintConfig;
