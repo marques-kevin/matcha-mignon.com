@@ -1,4 +1,4 @@
-import { link, text } from "../blocks";
+import { image, link, text } from "../blocks";
 import type { Guide } from "./types";
 
 export const guide: Guide = {
@@ -8,7 +8,7 @@ export const guide: Guide = {
     "Gâteau, cookies, glace, smoothie : nos recettes faciles au matcha. Quel grade utiliser, dosages et astuces pour un goût équilibré.",
   readingTime: "8 min",
   publishedAt: "2026-08-18",
-  updatedAt: "2026-08-18",
+  updatedAt: "2026-08-19",
   keywords: [
     "recette matcha",
     "gâteau matcha",
@@ -27,6 +27,14 @@ export const guide: Guide = {
     {
       heading: "Pourquoi du matcha culinaire en cuisine ?",
       content: [
+        // CC BY 2.0 Wikimedia: public/guides/recettes-matcha-cuisine/glace-matcha.attribution.txt
+        image(
+          "/guides/recettes-matcha-cuisine/glace-matcha.jpg",
+          "Glace au matcha dans un bol en céramique, pâtisserie et cuisine au matcha",
+          1280,
+          912,
+          "La glace au matcha : un usage culinaire du grade robuste."
+        ),
         text(
           "En pâtisserie et en cuisine salée, le matcha doit tenir face aux autres ingrédients — beurre, sucre, lait, farine — sans disparaître ni devenir trop amer. Le "
         ),

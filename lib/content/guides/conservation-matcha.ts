@@ -1,4 +1,4 @@
-import { link, text } from "../blocks";
+import { image, link, text } from "../blocks";
 import type { Guide } from "./types";
 
 export const guide: Guide = {
@@ -8,7 +8,7 @@ export const guide: Guide = {
     "Durée de vie après ouverture, récipient idéal, frigo ou pas : nos conseils pour stocker votre matcha et reconnaître qu'il est périmé.",
   readingTime: "4 min",
   publishedAt: "2026-08-16",
-  updatedAt: "2026-08-16",
+  updatedAt: "2026-08-19",
   keywords: [
     "conservation matcha",
     "conserver matcha",
@@ -21,6 +21,14 @@ export const guide: Guide = {
     {
       heading: "Durée de vie après ouverture",
       content: [
+        // CC0 Wikimedia: public/guides/conservation-matcha/boite-poudre-matcha.attribution.txt
+        image(
+          "/guides/conservation-matcha/boite-poudre-matcha.jpg",
+          "Boîte métallique ouverte de poudre de matcha vert pour la conservation",
+          1280,
+          720,
+          "Un récipient opaque et hermétique protège le matcha de la lumière et de l'air."
+        ),
         text(
           "Un matcha de qualité conserve ses arômes pendant 3 à 4 semaines après ouverture, si le sachet est refermé rapidement et stocké correctement. Avant ouverture, la date limite indiquée par le producteur peut aller jusqu'à 12 à 18 mois — mais la poudre perd progressivement sa fraîcheur dès la fabrication. Pour tirer le meilleur parti d'un sachet frais, consultez notre guide sur "
         ),

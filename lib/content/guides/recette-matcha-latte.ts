@@ -1,4 +1,4 @@
-import { link, text } from "../blocks";
+import { image, link, text } from "../blocks";
 import type { Guide } from "./types";
 
 export const guide: Guide = {
@@ -8,7 +8,7 @@ export const guide: Guide = {
     "Recette simple de matcha latte : dosages, lait végétal, mousse parfaite. Version chaude et iced, avec ou sans sucre.",
   readingTime: "6 min",
   publishedAt: "2026-08-18",
-  updatedAt: "2026-08-18",
+  updatedAt: "2026-08-19",
   keywords: [
     "recette matcha latte",
     "matcha latte maison",
@@ -25,6 +25,14 @@ export const guide: Guide = {
     {
       heading: "Ingrédients et dosages",
       content: [
+        // CC BY-SA 4.0 Wikimedia: public/guides/recette-matcha-latte/matcha-latte-tasse.attribution.txt
+        image(
+          "/guides/recette-matcha-latte/matcha-latte-tasse.jpg",
+          "Recette matcha latte en tasse noire avec latte art sur une table en bois",
+          1280,
+          720,
+          "Matcha latte maison : mousse fine et vert émeraude."
+        ),
         text(
           "Pour un matcha latte classique, prévoyez 2 g de matcha (environ 1 cuillère à café rase), 30 ml d'eau chaude (75–80 °C), 200 ml de lait végétal ou entier et un sucrant optionnel (miel, sirop d'érable ou sucre de coco). Un "
         ),
