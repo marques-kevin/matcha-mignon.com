@@ -4,6 +4,7 @@ export { Card } from "./card";
 export { Container, Page } from "./container";
 export { Grid } from "./grid";
 export { List, ListItem } from "./list";
+export { Logo } from "./logo";
 export { PageHeader } from "./page-header";
 export { Prose } from "./prose";
 export { Section } from "./section";

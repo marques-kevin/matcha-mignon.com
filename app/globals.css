@@ -33,6 +33,10 @@
   --color-brand-subtle: var(--color-matcha-100);
   --color-on-brand: #ffffff;
   --color-on-brand-muted: var(--color-matcha-100);
+  --color-inverse: var(--color-matcha-900);
+  --color-inverse-border: var(--color-matcha-800);
+  --color-on-inverse: var(--color-matcha-100);
+  --color-on-inverse-muted: var(--color-matcha-200);
   --color-border: var(--color-matcha-200);
   --color-border-brand: var(--color-matcha-300);
   --color-border-strong: var(--color-matcha-400);
