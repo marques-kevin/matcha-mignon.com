@@ -8,7 +8,7 @@ export const guide: Guide = {
     "Couleur, grade, budget et labels : nos critères pour choisir un matcha selon votre usage — dégustation, latte ou cuisine.",
   readingTime: "6 min",
   publishedAt: "2026-08-16",
-  updatedAt: "2026-08-16",
+  updatedAt: "2026-08-18",
   keywords: [
     "choisir matcha",
     "quel matcha acheter",
@@ -20,6 +20,7 @@ export const guide: Guide = {
     "preparer-le-matcha",
     "matcha-bio",
     "recettes-matcha-cuisine",
+    "accessoires-matcha",
   ],
   relatedProducts: [
     "matcha-ceremonie",
@@ -57,7 +58,9 @@ export const guide: Guide = {
         ),
         text(". Apprenez la préparation adaptée dans notre guide "),
         link("/guide/preparer-le-matcha", "comment préparer le matcha"),
-        text("."),
+        text(". Le matériel compte autant que la poudre : un bon "),
+        link("/guide/accessoires-matcha", "fouet matcha"),
+        text(" (chasen) révèle la mousse et limite les grumeaux."),
       ],
     },
     {

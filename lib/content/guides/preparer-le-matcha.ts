@@ -15,6 +15,7 @@ export const guide: Guide = {
     "recette-matcha-latte",
     "conservation-matcha",
     "bienfaits-matcha",
+    "accessoires-matcha",
   ],
   relatedProducts: ["matcha-ceremonie", "matcha-latte"],
   sections: [
@@ -24,7 +25,11 @@ export const guide: Guide = {
         text("Tamisez 1 à 2 g de "),
         link("/produits/matcha-ceremonie", "matcha de cérémonie"),
         text(
-          " dans un bol (chawan). Ajoutez 70 ml d'eau à 75–80 °C — jamais bouillante. Fouettez en M avec un chasen pendant 20 secondes jusqu'à obtenir une mousse fine."
+          " dans un bol (chawan). Ajoutez 70 ml d'eau à 75–80 °C — jamais bouillante. Fouettez en M avec un "
+        ),
+        link("/guide/accessoires-matcha", "fouet matcha"),
+        text(
+          " (chasen) pendant 20 secondes jusqu'à obtenir une mousse fine."
         ),
       ],
     },

@@ -69,6 +69,11 @@ const EXPECTED_META: Record<string, Pick<Guide, "title" | "description">> = {
     description:
       "Durée de vie après ouverture, récipient idéal, frigo ou pas : nos conseils pour stocker votre matcha et reconnaître qu'il est périmé.",
   },
+  "accessoires-matcha": {
+    title: "Fouet matcha (chasen) : lequel choisir",
+    description:
+      "Fouet bambou (chasen), entretien, tailles et alternatives. Guide d'achat des accessoires matcha pour débuter.",
+  },
 };
 
 describe("guides loader", () => {
