@@ -16,6 +16,7 @@ export const guide: Guide = {
     "conservation-matcha",
     "bienfaits-matcha",
     "accessoires-matcha",
+    "ceremonie-du-the-matcha",
   ],
   relatedProducts: [],
   sections: [
@@ -37,8 +38,10 @@ export const guide: Guide = {
         ),
         link("/guide/accessoires-matcha", "fouet matcha"),
         text(
-          " (chasen) pendant 20 secondes jusqu'à obtenir une mousse fine."
+          " (chasen) pendant 20 secondes jusqu'à obtenir une mousse fine. Ce geste usucha, simplifié, s'inspire de la "
         ),
+        link("/guide/ceremonie-du-the-matcha", "cérémonie du thé matcha"),
+        text("."),
       ],
     },
     {
