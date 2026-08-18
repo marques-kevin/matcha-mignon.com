@@ -58,7 +58,7 @@ body:
     attributes:
       label: Critères d'acceptation
       value: |
-        - [ ] Entrée ajoutée dans `lib/content/guides.ts`
+        - [ ] Fichier `lib/content/guides/<slug>.ts` avec `export const guide`
         - [ ] Title ≤ 60 caractères, description ≤ 160 caractères
         - [ ] `relatedGuides` et `relatedProducts` renseignés
         - [ ] `updatedAt` à la date du jour

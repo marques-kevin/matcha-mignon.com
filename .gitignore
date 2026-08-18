@@ -43,6 +43,9 @@ yarn-error.log*
 .env.*
 !.env.example
 
+# generated guides barrel (folder files are the source of truth)
+/lib/content/guides/index.ts
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
