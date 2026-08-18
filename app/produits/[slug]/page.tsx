@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { JsonLd } from "@/components/JsonLd";
@@ -66,6 +67,7 @@ export default async function ProductPage({ params }: Props) {
     "@type": "Product",
     name: product.title,
     description: product.description,
+    image: `${siteConfig.url}${product.image}`,
     brand: { "@type": "Brand", name: siteConfig.name },
     offers: {
       "@type": "Offer",
@@ -101,7 +103,7 @@ export default async function ProductPage({ params }: Props) {
   };
 
   return (
-    <Page>
+    <Page size="wide">
       <JsonLd data={productJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <Breadcrumb
@@ -111,22 +113,34 @@ export default async function ProductPage({ params }: Props) {
         ]}
       />
       <article>
-        <header className="mt-6">
-          <Badge>
-            {product.grade.charAt(0).toUpperCase() + product.grade.slice(1)}
-          </Badge>
-          <PageHeader
-            className="mt-4"
-            title={product.title}
-            description={product.description}
-          />
-          <Text variant="price" className="mt-4">
-            {product.price}
-          </Text>
-          <Text variant="caption" className="mt-1">
-            Origine : {product.origin}
-          </Text>
-        </header>
+        <div className="mt-6 grid gap-8 md:grid-cols-2 md:items-start md:gap-10">
+          <div className="overflow-hidden rounded-card bg-subtle">
+            <Image
+              src={product.image}
+              alt={product.imageAlt}
+              width={1200}
+              height={1200}
+              className="aspect-square w-full object-cover"
+              priority
+            />
+          </div>
+          <header>
+            <Badge>
+              {product.grade.charAt(0).toUpperCase() + product.grade.slice(1)}
+            </Badge>
+            <PageHeader
+              className="mt-4"
+              title={product.title}
+              description={product.description}
+            />
+            <Text variant="price" className="mt-4">
+              {product.price}
+            </Text>
+            <Text variant="caption" className="mt-1">
+              Origine : {product.origin}
+            </Text>
+          </header>
+        </div>
 
         <section className="mt-10">
           <Title as="h2" variant="h3">

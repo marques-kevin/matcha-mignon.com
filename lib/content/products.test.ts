@@ -1,3 +1,4 @@
+import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { getAllGuideSlugs } from "@/lib/content/guides";
 import {
@@ -49,5 +50,26 @@ describe("public products API", () => {
         );
       }
     }
+  });
+
+  it("exposes a public webp image and a French alt for every product", () => {
+    for (const product of products) {
+      expect(product.image).toBe(`/products/${product.slug}.webp`);
+      expect(product.imageAlt.length).toBeGreaterThan(10);
+      expect(existsSync(`public${product.image}`), product.image).toBe(true);
+    }
+  });
+});
+
+const rampColor =
+  /(?:bg|text|from|to|border)-matcha-\d+|text-white|bg-white|bg-cream/;
+
+describe("ProductCard", () => {
+  it("uses semantic tokens instead of the matcha ramp", () => {
+    const source = readFileSync("components/ProductCard.tsx", "utf8");
+    expect(source).not.toMatch(rampColor);
+    expect(source).toContain("product.image");
+    expect(source).toContain("product.imageAlt");
+    expect(source).toContain("variant=\"price\"");
   });
 });
