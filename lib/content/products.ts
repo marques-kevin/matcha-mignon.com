@@ -68,6 +68,7 @@ export const products: Product[] = [
     keywords: ["matcha latte", "matcha café", "poudre matcha latte"],
     relatedGuides: [
       "preparer-le-matcha",
+      "recette-matcha-latte",
       "bienfaits-matcha",
       "comment-choisir-son-matcha",
     ],
