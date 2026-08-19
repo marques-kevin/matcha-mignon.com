@@ -1,4 +1,4 @@
-import { Figtree, Shippori_Mincho } from "next/font/google";
+import { Figtree } from "next/font/google";
 import localFont from "next/font/local";
 
 export const figtree = Figtree({
@@ -8,13 +8,33 @@ export const figtree = Figtree({
 });
 
 /**
- * Display serif. next/font/google only exposes `latin` / `latin-ext` for this
- * family (the `japanese` subset is stripped from CJK metadata). Latin titles
- * come from Google; the logo 抹 is `shipporiMinchoMark`.
+ * Shippori Mincho cannot use next/font/google here: the Google CSS for this
+ * family includes ~120 CJK unicode-range files per weight, which next/font
+ * would self-host and preload. Latin + latin-ext (and the logo 抹) are local.
  */
-export const shipporiMincho = Shippori_Mincho({
-  subsets: ["latin", "latin-ext"],
-  weight: ["600", "700"],
+export const shipporiMincho = localFont({
+  src: [
+    {
+      path: "../fonts/shippori-mincho-latin-600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/shippori-mincho-latin-ext-600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/shippori-mincho-latin-700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/shippori-mincho-latin-ext-700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-shippori-mincho",
 });
