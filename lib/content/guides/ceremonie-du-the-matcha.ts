@@ -17,18 +17,18 @@ export const guide: Guide = {
   ],
   relatedGuides: ["preparer-le-matcha", "accessoires-matcha"],
   relatedProducts: [],
+  // CC BY-SA 4.0 Wikimedia: public/guides/ceremonie-du-the-matcha/ceremonie-the-japonaise-temae.attribution.txt
+  cover: image(
+    "/guides/ceremonie-du-the-matcha/ceremonie-the-japonaise-temae.jpg",
+    "Cérémonie du thé matcha (chanoyu) : hôte en kimono préparant le matcha au chasen sous une ombrelle rouge",
+    1280,
+    960,
+    "Temae en jardin : le matcha se prépare devant les invités, dans un geste lent et précis."
+  ),
   sections: [
     {
       heading: "Origines et philosophie wabi-sabi",
       content: [
-        // CC BY-SA 4.0 Wikimedia: public/guides/ceremonie-du-the-matcha/ceremonie-the-japonaise-temae.attribution.txt
-        image(
-          "/guides/ceremonie-du-the-matcha/ceremonie-the-japonaise-temae.jpg",
-          "Cérémonie du thé matcha (chanoyu) : hôte en kimono préparant le matcha au chasen sous une ombrelle rouge",
-          1280,
-          960,
-          "Temae en jardin : le matcha se prépare devant les invités, dans un geste lent et précis."
-        ),
         text(
           "La cérémonie du thé matcha, ou chanoyu (茶の湯, « eau chaude du thé »), est le rituel japonais de préparation et de service du matcha. On parle aussi de chadō ou sadō — la Voie du thé. Le geste prend forme entre le XIIᵉ et le XVIᵉ siècle : des moines zen rapportent le thé en poudre de Chine, puis Sen no Rikyū (1522–1591) lui donne son esthétique wabi-sabi — beauté de la simplicité, du bol imparfait, de l'instant présent."
         ),
