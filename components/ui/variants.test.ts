@@ -57,4 +57,20 @@ describe("semantic UI variants", () => {
     expect(linkVariants.default).toContain("motion-safe-transition");
     expect(cardVariants.default).toContain("motion-safe-transition");
   });
+
+  it("display titles use Shippori Mincho without tight tracking", () => {
+    const displayKeys = ["hero", "h1", "h2", "h3", "h4", "h5", "card"] as const;
+
+    for (const key of displayKeys) {
+      expect(titleVariants[key]).toContain("font-display");
+      expect(titleVariants[key]).not.toContain("tracking-tight");
+    }
+
+    expect(titleVariants.hero).toContain("text-5xl");
+    expect(titleVariants.hero).toContain("sm:text-6xl");
+    expect(titleVariants.h6).toContain("font-sans");
+    expect(titleVariants.h6).not.toContain("font-display");
+    expect(textVariants.eyebrow).toContain("font-sans");
+    expect(textVariants.body).toContain("font-sans");
+  });
 });

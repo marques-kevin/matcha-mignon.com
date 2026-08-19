@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteShell } from "@/components/SiteShell";
+import { fontVariables } from "@/lib/fonts";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={fontVariables}>
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationJsonLd} />
         <SiteShell>{children}</SiteShell>

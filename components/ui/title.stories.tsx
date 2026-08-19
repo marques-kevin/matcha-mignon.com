@@ -6,6 +6,14 @@ const meta: Meta<typeof Title> = {
   title: "UI/Title",
   component: Title,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "hero, h1–h5 and card use font-display (Shippori Mincho). h6 stays font-sans (Figtree).",
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: "select",

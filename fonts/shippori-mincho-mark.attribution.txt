@@ -1,0 +1,9 @@
+Shippori Mincho — 抹 (U+62B9) subset
+Copyright 2020 The Shippori Mincho Project Authors
+License: SIL Open Font License 1.1
+https://fonts.google.com/specimen/Shippori+Mincho
+https://github.com/fontdasu/ShipporiMincho
+
+Subset produced via the Google Fonts CSS API (`text=抹`, weight 700).
+next/font/google omits the `japanese` subset from Shippori Mincho metadata
+(CJK files are too large to preload), so this 1 KB file covers the logo glyph.

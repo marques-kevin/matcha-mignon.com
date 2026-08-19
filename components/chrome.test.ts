@@ -49,6 +49,8 @@ describe("header, footer, and logo chrome", () => {
     expect(source).toContain("text-on-brand");
     expect(source).toContain("rounded-pill");
     expect(source).toContain("抹");
+    expect(source).toContain("font-display");
+    expect(source).not.toContain("tracking-tight");
   });
 
   it("desktop nav stays inline from md and keeps obfuscation", () => {
