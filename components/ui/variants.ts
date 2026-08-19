@@ -1,23 +1,23 @@
 export const titleVariants = {
-  h1: "text-3xl font-bold tracking-tight text-fg",
-  h2: "text-2xl font-bold text-fg",
-  h3: "text-xl font-semibold text-fg",
-  h4: "text-lg font-semibold text-fg",
-  h5: "text-base font-semibold text-fg",
-  h6: "text-sm font-semibold uppercase tracking-wider text-fg-subtle",
-  hero: "text-4xl font-bold tracking-tight text-fg sm:text-5xl",
-  card: "text-lg font-semibold text-fg group-hover:text-brand",
+  h1: "font-display text-3xl font-bold text-fg",
+  h2: "font-display text-2xl font-bold text-fg",
+  h3: "font-display text-xl font-semibold text-fg",
+  h4: "font-display text-lg font-semibold text-fg",
+  h5: "font-display text-base font-semibold text-fg",
+  h6: "font-sans text-sm font-semibold uppercase tracking-wider text-fg-subtle",
+  hero: "font-display text-5xl font-bold text-fg sm:text-6xl",
+  card: "font-display text-lg font-semibold text-fg group-hover:text-brand",
 } as const;
 
 export const textVariants = {
-  body: "text-base leading-relaxed text-fg-muted",
+  body: "font-sans text-base leading-relaxed text-fg-muted",
   lead: "text-lg leading-relaxed text-brand",
   small: "text-sm leading-relaxed text-brand/80",
   muted: "text-sm text-fg-subtle",
   caption: "text-xs text-fg-subtle",
   label: "text-sm font-medium text-fg-muted",
   price: "text-2xl font-bold text-fg-muted",
-  eyebrow: "text-sm font-medium uppercase tracking-widest text-fg-subtle",
+  eyebrow: "font-sans text-sm font-medium uppercase tracking-widest text-fg-subtle",
 } as const;
 
 export const buttonVariants = {

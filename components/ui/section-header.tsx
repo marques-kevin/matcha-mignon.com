@@ -24,7 +24,12 @@ export function SectionHeader({
   titleVariant = "h2",
 }: SectionHeaderProps) {
   return (
-    <div className={cn("flex items-end justify-between gap-4", className)}>
+    <div
+      className={cn(
+        "flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4",
+        className,
+      )}
+    >
       <div>
         <Title as={titleAs} variant={titleVariant}>
           {href ? <TextLink href={href}>{title}</TextLink> : title}

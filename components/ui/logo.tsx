@@ -3,11 +3,11 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const markClasses =
-  "flex h-8 w-8 items-center justify-center rounded-pill bg-brand-hover text-sm font-bold text-on-brand";
+  "flex h-8 w-8 items-center justify-center rounded-pill bg-brand-hover font-display text-sm font-bold text-on-brand";
 
 const wordmarkClasses = {
-  default: "text-lg font-semibold tracking-tight text-fg group-hover:text-brand",
-  inverse: "text-lg font-semibold tracking-tight text-on-brand",
+  default: "font-display text-lg font-semibold text-fg group-hover:text-brand",
+  inverse: "font-display text-lg font-semibold text-on-brand",
 } as const;
 
 export type LogoTone = keyof typeof wordmarkClasses;

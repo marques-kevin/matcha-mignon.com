@@ -13,14 +13,18 @@
   --color-matcha-700: #415a2e;
   --color-matcha-800: #364927;
   --color-matcha-900: #2e3d22;
-  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
   --radius-card: 1rem;
   --radius-card-sm: 0.75rem;
   --radius-pill: 9999px;
 }
 
-/* Role aliases of the matcha ramp — inline so opacity modifiers (e.g. /50) resolve. */
+/* Role aliases of the matcha ramp — inline so opacity modifiers (e.g. /50) resolve.
+   Font tokens reference next/font CSS variables set on <html>. */
 @theme inline {
+  --font-sans: var(--font-figtree), system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-display: var(--font-shippori-mincho), var(--font-shippori-mincho-mark),
+    ui-serif, Georgia, serif;
   --color-canvas: var(--color-cream);
   --color-surface: #ffffff;
   --color-subtle: var(--color-matcha-50);
@@ -65,5 +69,5 @@
 }
 
 @utility prose-matcha {
-  @apply prose max-w-none prose-headings:font-semibold prose-headings:text-fg prose-p:leading-relaxed prose-p:text-fg-muted prose-a:font-medium prose-a:text-brand prose-a:no-underline hover:prose-a:underline;
+  @apply prose max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-fg prose-p:leading-relaxed prose-p:text-fg-muted prose-a:font-medium prose-a:text-brand prose-a:no-underline hover:prose-a:underline;
 }

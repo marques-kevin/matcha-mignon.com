@@ -1,0 +1,12 @@
+Shippori Mincho
+Copyright 2020 The Shippori Mincho Project Authors
+License: SIL Open Font License 1.1
+https://fonts.google.com/specimen/Shippori+Mincho
+https://github.com/fontdasu/ShipporiMincho
+
+Self-hosted subsets (Google Fonts CSS API, display=swap):
+- latin + latin-ext, weights 600 and 700 — titles
+- U+62B9 (抹), weight 700 — logo mark
+
+next/font/google is not used for this family: its CSS includes the full CJK
+unicode-range split (~120 files per weight), which would bloat the static export.

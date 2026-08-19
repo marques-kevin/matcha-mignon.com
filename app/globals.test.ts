@@ -28,9 +28,18 @@ describe("globals.css design tokens", () => {
       "--color-focus",
       "--radius-card",
       "--radius-pill",
+      "--font-sans",
+      "--font-display",
     ]) {
       expect(css).toContain(`${token}:`);
     }
+  });
+
+  it("wires next/font CSS variables into sans and display families", () => {
+    expect(css).toContain("--font-sans: var(--font-figtree)");
+    expect(css).toContain("--font-display: var(--font-shippori-mincho)");
+    expect(css).toContain("var(--font-shippori-mincho-mark)");
+    expect(css).toContain("prose-headings:font-display");
   });
 
   it("sets a visible keyboard focus ring", () => {
